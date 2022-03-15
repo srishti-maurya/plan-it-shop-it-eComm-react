@@ -1,11 +1,4 @@
-export default function Card({
-  title,
-  image,
-  author,
-  price,
-  prevPrice,
-  rating,
-}) {
+export function Card({ title, image, author, price, prevPrice, rating }) {
   return (
     <>
       <div className="card-container-vertical">

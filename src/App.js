@@ -3,7 +3,7 @@ import MockAPI from "./frontend/components/MockAPI";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./frontend/pages/Home";
-export const axios = require("axios").default;
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState([]);

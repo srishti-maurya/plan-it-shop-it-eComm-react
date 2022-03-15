@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "../assets/logo/logo.png";
 import { FaBars, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { logo } from "../exports";
 
-export default function Nav() {
+export function Nav() {
   return (
     <>
       <div class="navigation-container">

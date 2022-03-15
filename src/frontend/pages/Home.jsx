@@ -1,16 +1,18 @@
-import Card from "../components/Card";
-import Nav from "../components/Nav";
-import coverImage from "../assets/images/cover.jpeg";
-// section collection image
-import bestSellers from "../assets/images/bestsellers.jpeg";
-import newReleases from "../assets/images/new release.jpeg";
-import expertPicks from "../assets/images/expert.jpeg";
-// section genre image
-import contemporaryFiction from "../assets/images/book cluster.jpeg";
-import selfHelp from "../assets/images/self help.jpeg";
-import biographies from "../assets/images/bio.jpeg";
-import spirituality from "../assets/images/spiritual.jpeg";
-import mythology from "../assets/images/history.jpeg";
+// components
+import { Card, Nav } from "../exports";
+
+//images
+import {
+  coverImage,
+  bestSellers,
+  newReleases,
+  expertPicks,
+  contemporaryFiction,
+  selfHelp,
+  biographies,
+  spirituality,
+  mythology,
+} from "../exports";
 
 function SectionHero() {
   return (
