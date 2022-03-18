@@ -13,6 +13,7 @@ import selfHelp from "./assets/images/self help.jpeg";
 import biographies from "./assets/images/bio.jpeg";
 import spirituality from "./assets/images/spiritual.jpeg";
 import mythology from "./assets/images/history.jpeg";
+
 export {
   logo,
   coverImage,

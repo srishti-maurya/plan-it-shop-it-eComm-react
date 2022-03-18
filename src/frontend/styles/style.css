@@ -35,6 +35,64 @@ html,
   text-align: center;
 }
 
+.card-icon {
+  color: var(--color-dark-700);
+}
+
+.card-icon {
+  padding: 0.5rem;
+  right: 0;
+  top: 0;
+}
+
+.card-icon:hover {
+  color: var(--color-error-400);
+}
+
+.card-badge-best-seller {
+  position: absolute;
+  cursor: pointer;
+  background-color: var(--color-warning-400);
+  padding: 2px 5px;
+  left: 0;
+  top: 10px;
+}
+
+.card-badge-new-releases {
+  position: absolute;
+  cursor: pointer;
+  background-color: var(--color-secondary-400);
+  color: var(--color-white-400);
+  padding: 2px 5px;
+  left: 0;
+  top: 10px;
+}
+
+.card-img {
+  padding-top: 5px;
+}
+
+.icon-star {
+  color: var(--color-warning-400);
+  padding-left: 5px;
+}
+
+.rating-wrapper {
+  background-color: var(--color-bg-card-overlay-text);
+  font-size: smaller;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10%;
+  bottom: 43%;
+  color: var(--color-white-400);
+  padding: 1px 4px;
+  max-height: 15px;
+  padding: 2px 5px;
+  line-height: 0;
+}
+
 /* component Nav */
 
 .img-logo {
