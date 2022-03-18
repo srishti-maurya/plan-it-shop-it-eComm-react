@@ -1,6 +1,6 @@
 import React from "react";
 import { FaBars, FaHeart, FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { logo } from "../exports";
 
 export function Nav() {

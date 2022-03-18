@@ -3,17 +3,17 @@ import axios from "axios";
 
 const DataContext = createContext();
 
-export const useData = () => useContext(DataContext);
+const useData = () => useContext(DataContext);
 
-export function DataProvider({ children }) {
+function DataProvider({ children }) {
   const [data, setData] = useState([]);
 
   useEffect(
     () =>
       (async function () {
-        console.log("useEffect");
         try {
           const response = await axios.get("/api/products");
+          // console.log(response);
           const res = response.data.products;
           setData(res);
         } catch (error) {
@@ -23,11 +23,11 @@ export function DataProvider({ children }) {
     []
   );
 
-  console.log("data context data-", data);
-
   return (
     <DataContext.Provider value={{ data, setData }}>
       {children}
     </DataContext.Provider>
   );
 }
+
+export { useData, DataProvider };

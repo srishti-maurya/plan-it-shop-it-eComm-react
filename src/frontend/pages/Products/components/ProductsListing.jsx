@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { useData } from "../../../contexts/data-context";
-import { useProducts } from "../../../contexts/products-context";
 import { Card } from "../../../exports";
 
-export function ProductsListing() {
-  // const { processedData } = useProducts();
-  const { processedData } = useProducts();
-  console.log(processedData, "from lisiting");
+export default function ProductsListing() {
+  const { data } = useData();
   return (
     <div className="card-wrapper">
-      {processedData?.map(
+      {data?.map(
         ({
           title,
           image,

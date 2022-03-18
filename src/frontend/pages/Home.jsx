@@ -91,7 +91,6 @@ function SectionGenre() {
 
 function SectionChoice() {
   const { data } = useData();
-  console.log("from home", data);
   return (
     <>
       <h2 className="color-text-primary text-3xl text-center">
@@ -132,7 +131,6 @@ function SectionChoice() {
 }
 
 export function Home() {
-  console.log("home page works");
   return (
     <div className="home">
       <Nav />
