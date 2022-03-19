@@ -27,30 +27,36 @@ export function filterByCategory(
 
   if (CONTEMPORARY_FICTION) {
     let newList = sortedData.filter(
-      (item) => item.category === "contemporary-fiction"
+      (item) => item.categoryName === "contemporary-fiction"
     );
     filteredlist.push(...newList);
   }
 
   if (SELF_HELP) {
-    let newList = sortedData.filter((item) => item.category === "self-help");
+    let newList = sortedData.filter(
+      (item) => item.categoryName === "self-help"
+    );
     filteredlist.push(...newList);
   }
 
   if (BIOGRAPHIES_AUTOBIOGRAPHIES) {
     let newList = sortedData.filter(
-      (item) => item.category === "biographies-autobiographies"
+      (item) => item.categoryName === "biographies-autobiographies"
     );
     filteredlist.push(...newList);
   }
 
   if (SPIRITUALITY) {
-    let newList = sortedData.filter((item) => item.category === "spirituality");
+    let newList = sortedData.filter(
+      (item) => item.categoryName === "spirituality"
+    );
     filteredlist.push(...newList);
   }
 
   if (MYTHOLOGY) {
-    let newList = sortedData.filter((item) => item.category === "mythology");
+    let newList = sortedData.filter(
+      (item) => item.categoryName === "mythology"
+    );
     filteredlist.push(...newList);
   }
 
@@ -72,6 +78,6 @@ export function filterByCategory(
   if (ALL_CATEGORY) {
     return sortedData;
   }
-
+  console.log(filteredlist);
   return filteredlist;
 }

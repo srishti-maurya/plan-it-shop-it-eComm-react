@@ -1,5 +1,4 @@
 import { FaStar, FaShoppingCart, FaHeart } from "react-icons/fa";
-// import { useProducts } from "../contexts/products-context";
 
 export function Card({
   title,
@@ -10,6 +9,7 @@ export function Card({
   rating,
   bestseller,
   newRelease,
+  discount,
 }) {
   return (
     <>
@@ -28,17 +28,15 @@ export function Card({
         <img src={image} alt="card-img" className="img-responsive card-img" />
         <div className="card-body-vertical">
           <div className="card-vertical-section">
-            <div
-              className="text-lg card-he
-            ading"
-            >
-              {title}
-            </div>
+            <div className="text-lg card-heading">{title}</div>
             <div className="text-sm color-text-grey">{author}</div>
             <div className="card-price text-sm">
               <span> ₹ {price} </span>
               <span className="price-before text-xs color-text-grey ">
                 ₹{prevPrice}
+              </span>
+              <span className="color-text-dark-green text-xs">
+                (Save {discount}%)
               </span>
               <div className="text-base inline-block rating-wrapper">
                 {rating}

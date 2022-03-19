@@ -13,7 +13,6 @@ function DataProvider({ children }) {
       (async function () {
         try {
           const response = await axios.get("/api/products");
-          // console.log(response);
           const res = response.data.products;
           setData(res);
         } catch (error) {

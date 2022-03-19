@@ -3,6 +3,7 @@
 :root {
   --nav-shadow: 0 0 4px rgb(0 0 0 / 40%);
   --overlay-clr: rgba(243, 243, 249, 0.77);
+  --color-dark-green: #116530;
 }
 
 /* global selectors */
@@ -28,6 +29,8 @@ html,
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
 }
 
 .card-container-vertical {
@@ -91,6 +94,10 @@ html,
   max-height: 15px;
   padding: 2px 5px;
   line-height: 0;
+}
+
+.color-text-dark-green {
+  color: var(--color-dark-green);
 }
 
 /* component Nav */

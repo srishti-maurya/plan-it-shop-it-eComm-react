@@ -110,6 +110,7 @@ function SectionChoice() {
               _id,
               bestseller,
               newRelease,
+              discount,
             }) => (
               <div key={_id}>
                 <Card
@@ -121,6 +122,7 @@ function SectionChoice() {
                   rating={rating}
                   bestseller={bestseller}
                   newRelease={newRelease}
+                  discount={discount}
                 />
               </div>
             )

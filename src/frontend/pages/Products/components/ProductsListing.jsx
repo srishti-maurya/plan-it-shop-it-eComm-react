@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useData } from "../../../contexts/data-context";
+import React from "react";
+import { useProducts } from "../../../contexts/products-context";
 import { Card } from "../../../exports";
 
 export default function ProductsListing() {
-  const { data } = useData();
+  const { processedData } = useProducts();
   return (
     <div className="card-wrapper">
-      {data?.map(
+      {processedData?.map(
         ({
           title,
           image,
@@ -17,6 +17,7 @@ export default function ProductsListing() {
           _id,
           bestseller,
           newRelease,
+          discount,
         }) => (
           <div key={_id}>
             <Card
@@ -28,6 +29,7 @@ export default function ProductsListing() {
               rating={rating}
               bestseller={bestseller}
               newRelease={newRelease}
+              discount={discount}
             />
           </div>
         )
