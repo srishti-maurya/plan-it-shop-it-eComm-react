@@ -1,8 +1,8 @@
 import "./authStyles.css";
-import React, { useState } from "react";
-import { IoIosArrowForward } from "react-icons/io";
+import React from "react";
+import { FaAngleRight } from "react-icons/fa";
 import { Nav } from "../../index.js";
-import { useAuth } from "../../contexts/auth-context.js";
+import { useAuth } from "../../contexts/index";
 
 export function Login() {
   const { loginHandler, loginInput, setLoginInput } = useAuth();
@@ -77,7 +77,7 @@ export function Login() {
               <div className="text-center p-1 anchor-text">
                 <a>
                   Create new account
-                  <IoIosArrowForward />
+                  <FaAngleRight />
                 </a>
               </div>
             </div>

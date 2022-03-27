@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useProducts } from "../../../contexts/products-context";
+import { useProducts } from "../../../contexts/index";
 import { bestSellers, newReleases, expertPicks } from "../../../index";
 
 export function SectionCollection() {

@@ -1,5 +1,5 @@
 import { FaStar, FaShoppingCart, FaHeart } from "react-icons/fa";
-import { useCart } from "../contexts/cart-context.js";
+import { useCart } from "../contexts/index";
 
 export function Card({ item }) {
   const {

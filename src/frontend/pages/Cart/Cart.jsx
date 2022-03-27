@@ -1,8 +1,7 @@
 import React from "react";
-import { Card } from "../../components/Card";
-import { useCart } from "../../contexts/cart-context";
-import { Nav } from "../../index";
 import "./cartStyles.css";
+import { useCart } from "../../contexts/index";
+import { Nav } from "../../index";
 import { HorizontalCard } from "./components/HorizontalCard";
 
 export function Cart() {

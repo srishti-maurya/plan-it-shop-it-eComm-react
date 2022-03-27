@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaCheckCircle, FaCheck } from "react-icons/fa";
 import { Nav } from "../../components/Nav";
-import { Link } from "react-router-dom";
 
 export function Logout() {
   return (

@@ -1,14 +1,13 @@
 import React from "react";
-import { FaBars, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { logo } from "../index";
+import { FaBars, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../contexts/cart-context";
-import { useAuth } from "../contexts/auth-context";
+import { useCart, useAuth } from "../contexts/index";
 
 export function Nav() {
   const { isLoggedIn, logoutHandler } = useAuth();
-  const navigate = useNavigate();
   const { cartItems } = useCart();
+  const navigate = useNavigate();
 
   return (
     <>

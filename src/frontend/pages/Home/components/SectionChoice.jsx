@@ -1,4 +1,4 @@
-import { useData } from "../../../contexts/data-context";
+import { useData } from "../../../contexts/index";
 import { Card } from "../../../index";
 
 export function SectionChoice() {

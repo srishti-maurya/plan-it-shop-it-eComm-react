@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "./cart-context";
+import axios from "axios";
 
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);

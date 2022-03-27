@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
-import { useAuth } from "./auth-context";
+import { useAuth } from "./index";
 
 const CartContext = createContext();
 
@@ -30,7 +30,7 @@ export function CartProvider({ children }) {
       })();
     }
   }
-  // console.log(cartItems);
+
   return (
     <CartContext.Provider value={{ cartItems, setCartItems, addToCart }}>
       {children}

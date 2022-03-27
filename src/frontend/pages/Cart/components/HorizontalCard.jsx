@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar, FaShoppingCart, FaHeart } from "react-icons/fa";
+import { FaStar, FaHeart } from "react-icons/fa";
 
 export function HorizontalCard({ item }) {
   const {

@@ -1,5 +1,5 @@
 import React from "react";
-import { useProducts } from "../../../contexts/products-context";
+import { useProducts } from "../../../contexts/index";
 import { Checkbox, RadioButton } from "./index.js";
 
 export function FiltersListing() {

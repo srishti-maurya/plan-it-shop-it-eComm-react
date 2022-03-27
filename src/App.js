@@ -1,8 +1,7 @@
 import "./frontend/styles/style.css";
 import MockAPI from "./frontend/components/MockAPI";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, Products, Cart } from "./frontend/pages/index";
-import { Logout } from "./frontend/pages/Authentication/Logout";
+import { Home, Login, Products, Cart, Logout } from "./frontend/pages/index";
 
 function App() {
   return (
