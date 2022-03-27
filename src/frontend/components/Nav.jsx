@@ -1,12 +1,14 @@
 import React from "react";
 import { logo } from "../index";
+import { ToastContainer } from "react-toastify";
 import { FaBars, FaHeart, FaShoppingCart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useCart, useAuth } from "../contexts/index";
+import { useCart, useAuth, useWishlist } from "../contexts";
 
 export function Nav() {
   const { isLoggedIn, logoutHandler } = useAuth();
   const { cartItems } = useCart();
+  const { wishlistItems } = useWishlist();
   const navigate = useNavigate();
 
   return (
@@ -28,9 +30,11 @@ export function Nav() {
         </button>
         <div className="navigation-tools">
           {isLoggedIn ? (
-            <button className="btn btn-sm primary" onClick={logoutHandler}>
-              Logout
-            </button>
+            <>
+              <button className="btn btn-sm primary" onClick={logoutHandler}>
+                Logout
+              </button>
+            </>
           ) : (
             <button
               className="btn btn-sm primary"
@@ -39,16 +43,26 @@ export function Nav() {
               Login
             </button>
           )}
+          <ToastContainer />
           <div>
-            <div className="badge-container">
-              <FaHeart />
-              <div className="badge-icon badge-small color-bg-secondary">0</div>
+            <div
+              className="badge-container"
+              onClick={() => navigate("/wishlist")}
+            >
+              <FaHeart className="cursor-pointer" />
+              {isLoggedIn ? (
+                <div className="badge-icon badge-small color-bg-secondary">
+                  {wishlistItems.length}
+                </div>
+              ) : null}
             </div>
             <div className="badge-container" onClick={() => navigate("/cart")}>
-              <FaShoppingCart />
-              <div className="badge-icon badge-small color-bg-secondary">
-                {cartItems.length}
-              </div>
+              <FaShoppingCart className="cursor-pointer" />
+              {isLoggedIn ? (
+                <div className="badge-icon badge-small color-bg-secondary">
+                  {cartItems.length}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

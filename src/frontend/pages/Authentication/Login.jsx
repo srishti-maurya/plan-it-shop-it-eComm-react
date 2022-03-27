@@ -1,6 +1,6 @@
 import "./authStyles.css";
 import React from "react";
-import { FaAngleRight } from "react-icons/fa";
+import { ToastContainer } from "react-toastify";
 import { Nav } from "../../index.js";
 import { useAuth } from "../../contexts/index";
 
@@ -71,14 +71,12 @@ export function Login() {
               >
                 Login with test credentials
               </button>
+              <ToastContainer />
               <button className="btn btn-primary btn-full-width" type="submit">
                 Login
               </button>
               <div className="text-center p-1 anchor-text">
-                <a>
-                  Create new account
-                  <FaAngleRight />
-                </a>
+                <a>Create new account</a>
               </div>
             </div>
           </form>

@@ -1,5 +1,6 @@
-import { FaStar, FaShoppingCart, FaHeart } from "react-icons/fa";
-import { useCart } from "../contexts/index";
+import { FaStar, FaHeart } from "react-icons/fa";
+import { useCart, useWishlist } from "../contexts/index";
+import { useNavigate } from "react-router-dom";
 
 export function Card({ item }) {
   const {
@@ -12,14 +13,31 @@ export function Card({ item }) {
     bestseller,
     newRelease,
     discount,
+    _id,
   } = item;
-  const { addToCart } = useCart();
+  const { addToCart, cartItems } = useCart();
+  const { wishlistItems, addToWishlist, deleteWishlistItem } = useWishlist();
+  const navigate = useNavigate();
+
+  const matchedItem = cartItems.find((element) => {
+    return element._id === item._id;
+  });
+
+  const inWishlist = wishlistItems.find((element) => {
+    return element._id === item._id;
+  });
+
   return (
     <>
       <div className="card-container-vertical">
         <div className="icon-container">
-          <div className="card-icon">
-            <FaHeart />
+          <div
+            className="card-icon"
+            onClick={() => {
+              inWishlist ? deleteWishlistItem(_id) : addToWishlist(item);
+            }}
+          >
+            <FaHeart style={{ color: inWishlist ? "red" : "" }} />
           </div>
           {bestseller && (
             <div className="card-badge-best-seller text-xs">Best Seller</div>
@@ -48,8 +66,15 @@ export function Card({ item }) {
                 </div>
               </div>
             </div>
-            <button className="btn btn-sm" onClick={() => addToCart(item)}>
-              <FaShoppingCart /> add to cart
+            <button
+              className="btn btn-sm"
+              onClick={() => {
+                {
+                  matchedItem ? navigate("/cart") : addToCart(item);
+                }
+              }}
+            >
+              {matchedItem ? "go to cart" : "add to cart"}
             </button>
           </div>
         </div>

@@ -15,7 +15,7 @@ export function SectionCollection() {
         }}
       >
         <div className="category-body">
-          <img src={image} alt="image" className="img-responsive" />
+          <img src={image} alt={title} className="img-responsive" />
           <h3 className="text-center">{title}</h3>
         </div>
       </div>

@@ -1,48 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./cartStyles.css";
-import { useCart } from "../../contexts/index";
-import { Nav } from "../../index";
+import { useCart } from "../../contexts";
+import { Nav, emptyCart } from "../../index";
 import { HorizontalCard } from "./components/HorizontalCard";
+import { CartBill } from "./components/CartBill";
 
 export function Cart() {
-  const { cartItems } = useCart();
+  const { cartItems, getCartItems } = useCart();
+  useEffect(() => getCartItems(), []);
   return (
-    <div>
-      <Nav />
-      <h1 className="text-center p-1">My cart</h1>
-      <section className="cart-container">
-        <div className="cart-card-warpper">
-          {cartItems.map((item) => (
-            <>
-              <HorizontalCard item={item} />
-            </>
-          ))}
-        </div>
-        <div className="cart-price-details-container">
-          <p className="text-2xl font-semibold">Price Details</p>
-          <div className="horizontal-div"></div>
-          <div className="cart-price-desc">
-            <p>Price (2 items)</p>
-            <p> ₹ 1000</p>
+    <>
+      <div>
+        <Nav />
+        <h1 className="text-center p-1">My cart</h1>
+        {cartItems.length <= 0 ? (
+          <div className="empty">
+            <img src={emptyCart} alt="empty_cart" />
+            <p className="text-center color-text-secondary text-xl py-2">
+              Cart is empty
+            </p>
           </div>
-          <div className="cart-price-desc">
-            <p>Discount</p>
-            <p> - ₹ 500</p>
-          </div>
-          <div className="cart-price-desc">
-            <p>Delivery Charges</p>
-            <p> ₹ 199</p>
-          </div>
-          <div className="horizontal-div"></div>
-          <div className="cart-price-desc">
-            <p className="text-2xl font-semibold">Total Amount</p>
-            <p className="text-2xl font-semibold"> ₹ 699</p>
-          </div>
-          <div className="horizontal-div"></div>
-          <p className="pb-1">You will save ₹ 301 on this order</p>
-          <button className="btn btn-full-width">Place order </button>
-        </div>
-      </section>
-    </div>
+        ) : (
+          <section className="cart-container">
+            <div className="cart-card-warpper">
+              {cartItems.map((item) => (
+                <div key={item.id}>
+                  <HorizontalCard item={item} />
+                </div>
+              ))}
+            </div>
+            {cartItems.length > 0 && <CartBill />}
+          </section>
+        )}
+      </div>
+    </>
   );
 }

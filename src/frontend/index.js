@@ -13,6 +13,8 @@ import selfHelp from "./assets/images/self help.jpeg";
 import biographies from "./assets/images/bio.jpeg";
 import spirituality from "./assets/images/spiritual.jpeg";
 import mythology from "./assets/images/history.jpeg";
+import emptyCart from "./assets/svg/empty_cart.svg";
+import emptyWishlist from "./assets/svg/empty_wishlist.svg";
 
 export {
   logo,
@@ -25,4 +27,6 @@ export {
   biographies,
   spirituality,
   mythology,
+  emptyCart,
+  emptyWishlist,
 };

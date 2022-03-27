@@ -20,7 +20,7 @@ export function Logout() {
         </div>
         <div className="back-to-home-link">
           <Link to="/" className="nav-links">
-            Back to Home
+            Go Back to Home
           </Link>
         </div>
       </section>
