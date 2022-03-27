@@ -78,6 +78,5 @@ export function filterByCategory(
   if (ALL_CATEGORY) {
     return sortedData;
   }
-  console.log(filteredlist);
   return filteredlist;
 }

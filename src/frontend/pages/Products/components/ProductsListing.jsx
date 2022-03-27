@@ -1,39 +1,16 @@
 import React from "react";
-import { useProducts } from "../../../contexts/products-context";
-import { Card } from "../../../exports";
+import { useProducts } from "../../../contexts/index";
+import { Card } from "../../../index.js";
 
-export default function ProductsListing() {
+export function ProductsListing() {
   const { processedData } = useProducts();
   return (
     <div className="card-wrapper">
-      {processedData?.map(
-        ({
-          title,
-          image,
-          author,
-          price,
-          prevPrice,
-          rating,
-          _id,
-          bestseller,
-          newRelease,
-          discount,
-        }) => (
-          <div key={_id}>
-            <Card
-              title={title}
-              image={image}
-              author={author}
-              price={price}
-              prevPrice={prevPrice}
-              rating={rating}
-              bestseller={bestseller}
-              newRelease={newRelease}
-              discount={discount}
-            />
-          </div>
-        )
-      )}
+      {processedData?.map((item) => (
+        <div key={item._id}>
+          <Card item={item} />
+        </div>
+      ))}
     </div>
   );
 }

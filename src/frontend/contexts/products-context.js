@@ -6,7 +6,7 @@ import {
   filterByRating,
   filterByPrice,
 } from "../utils";
-import { useData } from "./data-context";
+import { useData } from "./index";
 
 const ProductsContext = createContext();
 
