@@ -48,7 +48,16 @@ html,
   top: 0;
 }
 
-.card-icon:hover {
+.horizontal-card-icon {
+  position: absolute;
+  padding: 0.5rem;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.card-icon:hover,
+.horizontal-card-icon:hover {
   color: var(--color-error-400);
 }
 
@@ -95,6 +104,21 @@ html,
   padding: 2px 5px;
   line-height: 0;
 }
+.horizontal-card-rating-wrapper {
+  background-color: var(--color-bg-card-overlay-text);
+  font-size: smaller;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 8%;
+  color: var(--color-white-400);
+  padding: 1px 4px;
+  max-height: 15px;
+  padding: 2px 5px;
+  line-height: 0;
+}
 
 .color-text-dark-green {
   color: var(--color-dark-green);
@@ -109,6 +133,20 @@ html,
 .navigation-container {
   width: initial;
   box-shadow: var(--nav-shadow);
+}
+
+.navigation-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.nav-links {
+  color: var(--color-primary-400);
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 700;
 }
 
 /* hero section */
@@ -204,13 +242,18 @@ html,
   box-shadow: var(--color-shadow);
 }
 
-/* footer */
-.footer-container {
-  margin-top: 2rem;
-  background-color: var(--color-white-400);
-  box-shadow: var(--color-shadow);
-  padding: 1rem;
-  text-align: center;
+/* utilities */
+.btn-full-width {
+  width: 100%;
+  margin: 0;
+}
+
+.padding-sm {
+  padding: 0.5rem;
+}
+
+.margin-sm {
+  margin: 0.5rem 0;
 }
 
 /* media queries */

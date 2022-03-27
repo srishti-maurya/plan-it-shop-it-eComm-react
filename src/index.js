@@ -5,6 +5,8 @@ import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { DataProvider } from "./frontend/contexts/data-context";
 import { ProductsProvider } from "./frontend/contexts/products-context";
+import { AuthProvider } from "./frontend/contexts/auth-context";
+import { CartProvider } from "./frontend/contexts/cart-context";
 
 // Call make Server
 makeServer();
@@ -12,11 +14,15 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <DataProvider>
-        <ProductsProvider>
-          <App />
-        </ProductsProvider>
-      </DataProvider>
+      <AuthProvider>
+        <DataProvider>
+          <CartProvider>
+            <ProductsProvider>
+              <App />
+            </ProductsProvider>
+          </CartProvider>
+        </DataProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

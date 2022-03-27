@@ -1,11 +1,10 @@
 import "./productsStyles.css";
 import "../../styles/style.css";
 import React from "react";
-import { Nav } from "../../exports";
-import ProductsListing from "./components/ProductsListing";
-import FiltersListing from "./components/FiltersListing";
+import { Nav } from "../../index";
+import { ProductsListing, FiltersListing } from "./components";
 
-export default function Products() {
+export function Products() {
   return (
     <>
       <Nav />

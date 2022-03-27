@@ -1,16 +1,19 @@
 import { FaStar, FaShoppingCart, FaHeart } from "react-icons/fa";
+import { useCart } from "../contexts/cart-context.js";
 
-export function Card({
-  title,
-  image,
-  author,
-  price,
-  prevPrice,
-  rating,
-  bestseller,
-  newRelease,
-  discount,
-}) {
+export function Card({ item }) {
+  const {
+    title,
+    image,
+    author,
+    price,
+    prevPrice,
+    rating,
+    bestseller,
+    newRelease,
+    discount,
+  } = item;
+  const { addToCart } = useCart();
   return (
     <>
       <div className="card-container-vertical">
@@ -25,7 +28,7 @@ export function Card({
             <div className="card-badge-new-releases text-xs">New Release</div>
           )}
         </div>
-        <img src={image} alt="card-img" className="img-responsive card-img" />
+        <img src={image} alt="card" className="img-responsive card-img" />
         <div className="card-body-vertical">
           <div className="card-vertical-section">
             <div className="text-lg card-heading">{title}</div>
@@ -45,7 +48,7 @@ export function Card({
                 </div>
               </div>
             </div>
-            <button className="btn btn-sm">
+            <button className="btn btn-sm" onClick={() => addToCart(item)}>
               <FaShoppingCart /> add to cart
             </button>
           </div>
