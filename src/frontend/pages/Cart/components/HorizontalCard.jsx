@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar, FaHeart } from "react-icons/fa";
-import { useCart } from "../../../contexts";
+import { useCart, useWishlist } from "../../../contexts";
 
 export function HorizontalCard({ item }) {
   const {
@@ -17,12 +17,21 @@ export function HorizontalCard({ item }) {
     qty,
   } = item;
   const { deleteItems, changeQty } = useCart();
+  const { wishlistItems, deleteWishlistItem, addToWishlist } = useWishlist();
+  const inWishlist = wishlistItems.find((element) => {
+    return element._id === item._id;
+  });
   return (
     <div>
       <div className="card-container-horizontal">
         <div className="horizontal-card-icon-container">
-          <div className="horizontal-card-icon">
-            <FaHeart />
+          <div
+            className="horizontal-card-icon"
+            onClick={() => {
+              inWishlist ? deleteWishlistItem(_id) : addToWishlist(item);
+            }}
+          >
+            <FaHeart style={{ color: inWishlist ? "red" : "" }} />
           </div>
           {bestseller && (
             <div className="card-badge-best-seller text-xs">Best Seller</div>

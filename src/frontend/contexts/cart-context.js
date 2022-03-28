@@ -1,16 +1,15 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useAuth } from "./index";
-import { useNavigate } from "react-router-dom";
+import { successToast } from "../utils";
 
 const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
 export function CartProvider({ children }) {
-  const { token, isLoggedIn } = useAuth();
+  const { token, isLoggedIn, navigate } = useAuth();
   const [cartItems, setCartItems] = useState([]);
-  const navigate = useNavigate();
 
   function addToCart(product) {
     if (isLoggedIn) {
@@ -26,6 +25,7 @@ export function CartProvider({ children }) {
             }
           );
           setCartItems(response.data.cart);
+          successToast("Item added to cart");
         } catch (error) {
           console.error("ERROR", error);
         }
@@ -69,6 +69,7 @@ export function CartProvider({ children }) {
           }
         );
         setCartItems(response.data.cart);
+        successToast("Quantity updated");
       } catch (error) {
         console.error("ERROR", error);
       }
@@ -84,6 +85,7 @@ export function CartProvider({ children }) {
           },
         });
         setCartItems(response.data.cart);
+        successToast("Item deleted from cart");
       } catch (error) {
         console.error("ERROR", error);
       }

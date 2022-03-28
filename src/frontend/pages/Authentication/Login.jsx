@@ -3,6 +3,7 @@ import React from "react";
 import { ToastContainer } from "react-toastify";
 import { Nav } from "../../index.js";
 import { useAuth } from "../../contexts/index";
+import { Link } from "react-router-dom";
 
 export function Login() {
   const { loginHandler, loginInput, setLoginInput } = useAuth();
@@ -28,7 +29,9 @@ export function Login() {
           <form onSubmit={loginHandler}>
             <div className="auth-form-container">
               <div className="input-text-group pb-1">
-                <label className="pb-05">Email address</label>
+                <label className="pb-05">
+                  Email address<span className="color-text-error">*</span>
+                </label>
                 <input
                   type="text"
                   placeholder="Enter your email address"
@@ -38,8 +41,10 @@ export function Login() {
                   required
                 />
               </div>
-              <div className="input-text-group">
-                <label className="pb-05">Password </label>
+              <div className="input-text-group pb-05">
+                <label className="pb-05">
+                  Password<span className="color-text-error">*</span>{" "}
+                </label>
                 <input
                   type="password"
                   placeholder="Enter your password"
@@ -49,24 +54,8 @@ export function Login() {
                   required
                 />
               </div>
-              <div className="input-text-group p-1">
-                <div className="pb-05 auth-wrapper-password">
-                  <div>
-                    <input type="checkbox" id="remember" />
-                    <label
-                      className="color-text-grey padding-sm"
-                      forhtml="remember"
-                    >
-                      Remember me
-                    </label>
-                  </div>
-                  <a href="#" className="color-text-secondary">
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
               <button
-                className="btn color-primary-outline btn-full-width margin-sm"
+                className="btn color-primary-outline btn-full-width margin-sm btn-sm"
                 onClick={testCredentialsLogin}
               >
                 Login with test credentials
@@ -76,7 +65,7 @@ export function Login() {
                 Login
               </button>
               <div className="text-center p-1 anchor-text">
-                <a>Create new account</a>
+                <Link to="/signup">Create new account</Link>
               </div>
             </div>
           </form>

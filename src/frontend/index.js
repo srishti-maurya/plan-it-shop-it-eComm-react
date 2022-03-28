@@ -15,6 +15,7 @@ import spirituality from "./assets/images/spiritual.jpeg";
 import mythology from "./assets/images/history.jpeg";
 import emptyCart from "./assets/svg/empty_cart.svg";
 import emptyWishlist from "./assets/svg/empty_wishlist.svg";
+import logoutImg from "./assets/svg/logout.svg";
 
 export {
   logo,
@@ -29,4 +30,5 @@ export {
   mythology,
   emptyCart,
   emptyWishlist,
+  logoutImg,
 };
