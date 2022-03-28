@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 20% auto;
   background-color: var(--color-white-400);
+  margin-top: 0.5rem;
 }
 
 .filter-section-header {
@@ -26,6 +27,10 @@
   grid-template-columns: repeat(4, 1fr);
   justify-content: space-evenly;
   justify-items: center;
+}
+
+.products-length {
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 950px) {

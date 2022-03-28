@@ -1,9 +1,10 @@
 import React from "react";
-import { useProducts } from "../../../contexts/index";
+import { useProducts, useData } from "../../../contexts/index";
 import { Checkbox, RadioButton } from "./index.js";
 
 export function FiltersListing() {
-  const { state, dispatch } = useProducts();
+  const { state, dispatch, processedData } = useProducts();
+  const { data } = useData();
 
   return (
     <aside className="p-1">
@@ -16,7 +17,10 @@ export function FiltersListing() {
           clear
         </button>
       </div>
-
+      <div className="horizontal-div"></div>
+      <div className="products-length color-text-grey">
+        Showing {processedData.length} of {data.length} products
+      </div>
       <div className="horizontal-div"></div>
 
       <h2 className="color-text-primary text-xl pb-1">Price</h2>
@@ -49,9 +53,7 @@ export function FiltersListing() {
         <div>300</div>
         <div>450</div>
       </div>
-
       <div className="horizontal-div"></div>
-
       <h2 className="color-text-primary text-xl pb-1">Category</h2>
       <Checkbox
         checked={state.category.ALL_CATEGORY}
@@ -83,9 +85,7 @@ export function FiltersListing() {
         label="Mythology"
         changeType="MYTHOLOGY"
       />
-
       <div className="horizontal-div"></div>
-
       <h2 className="color-text-primary text-xl pb-1">Rating</h2>
       <RadioButton
         label={`4.5 Stars & above`}
@@ -93,9 +93,7 @@ export function FiltersListing() {
       />
       <RadioButton label={`4 Stars & above`} checkedType="FOUR_STARS" />
       <RadioButton label={`3 Stars & above`} checkedType="THREE_STARS" />
-
       <div className="horizontal-div"></div>
-
       <h2 className="color-text-primary text-xl pb-1">Sort by</h2>
       <div className="pb-05">
         <input
@@ -123,9 +121,7 @@ export function FiltersListing() {
           Price - High to Low
         </label>
       </div>
-
       <div className="horizontal-div"></div>
-
       <h2 className="color-text-primary text-xl pb-1">Collections</h2>
       <Checkbox
         checked={state.bestseller}

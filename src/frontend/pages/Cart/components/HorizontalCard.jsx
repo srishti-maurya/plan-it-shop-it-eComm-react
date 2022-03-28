@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar, FaHeart } from "react-icons/fa";
+import { useCart } from "../../../contexts";
 
 export function HorizontalCard({ item }) {
   const {
@@ -12,7 +13,10 @@ export function HorizontalCard({ item }) {
     bestseller,
     newRelease,
     discount,
+    _id,
+    qty,
   } = item;
+  const { deleteItems, changeQty } = useCart();
   return (
     <div>
       <div className="card-container-horizontal">
@@ -54,17 +58,25 @@ export function HorizontalCard({ item }) {
           <div className="padding-bottom-xs">
             <p className="inline-block">Quantity</p>
             <span className="cart-total-item">
-              <p className="text-lg inline-block color-text-secondary p-05">
+              <p
+                className="text-lg inline-block color-text-secondary p-05 cursor-pointer"
+                onClick={() => changeQty(_id, "increment")}
+              >
                 +
               </p>
-              <p className="inline-block">1</p>
-              <p className="text-2xl inline-block color-text-secondary p-05">
+              <p className="inline-block">{qty}</p>
+              <p
+                className="text-2xl inline-block color-text-secondary p-05 cursor-pointer"
+                onClick={() => changeQty(_id, "decrement")}
+              >
                 -
               </p>
             </span>
           </div>
           <div>
-            <button className="btn btn-sm">Remove from cart</button>
+            <button className="btn btn-sm" onClick={() => deleteItems(_id)}>
+              Remove from cart
+            </button>
           </div>
         </div>
       </div>

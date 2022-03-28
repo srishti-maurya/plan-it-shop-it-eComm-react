@@ -19,6 +19,7 @@ html,
 }
 
 /* home page */
+
 .home {
   padding-bottom: 4rem;
 }
@@ -254,6 +255,16 @@ html,
 
 .margin-sm {
   margin: 0.5rem 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.empty img {
+  width: 400px;
+  display: block;
+  margin: auto;
 }
 
 /* media queries */

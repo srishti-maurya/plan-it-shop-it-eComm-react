@@ -1,23 +1,49 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }) {
   const navigate = useNavigate();
-  const initialState = localStorage.getItem("token");
-  const [token, setToken] = useState(initialState || "");
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [userData, setUserData] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") || false
+  );
   const [loginInput, setLoginInput] = useState({});
+
+  const notifyLogin = () =>
+    toast.success("Login successful", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  const notifyLogout = () =>
+    toast.success("Logout successful", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   const logoutHandler = async () => {
     localStorage.removeItem("token");
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     navigate("/logout");
+    setTimeout(() => notifyLogout(), 0);
   };
 
   const loginRequest = (input) => {
@@ -31,9 +57,12 @@ export function AuthProvider({ children }) {
       localStorage.setItem("token", JSON.stringify(data.encodedToken));
       localStorage.setItem("isLoggedIn", JSON.stringify(true));
       setToken(data.encodedToken);
-      setLoginInput({ email: "", password: "" });
-      navigate("/");
       setIsLoggedIn(true);
+      notifyLogin();
+      setTimeout(() => {
+        navigate("/");
+        setLoginInput({ email: "", password: "" });
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +81,7 @@ export function AuthProvider({ children }) {
         loginHandler,
         loginInput,
         setLoginInput,
+        navigate
       }}
     >
       {children}
