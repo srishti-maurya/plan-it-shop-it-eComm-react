@@ -1,16 +1,15 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useAuth } from "./index";
-import { useNavigate } from "react-router-dom";
+import { successToast } from "../utils";
 
 const WishlistContext = createContext();
 
 export const useWishlist = () => useContext(WishlistContext);
 
 export function WishlistProvider({ children }) {
-  const { token, isLoggedIn } = useAuth();
+  const { token, isLoggedIn, navigate } = useAuth();
   const [wishlistItems, setWishlistItems] = useState([]);
-  const navigate = useNavigate();
 
   function addToWishlist(product) {
     if (isLoggedIn) {
@@ -26,6 +25,7 @@ export function WishlistProvider({ children }) {
             }
           );
           setWishlistItems(response.data.wishlist);
+          successToast("Item added to wishlist");
         } catch (error) {
           console.error("ERROR", error);
         }
@@ -61,6 +61,7 @@ export function WishlistProvider({ children }) {
           },
         });
         setWishlistItems(response.data.wishlist);
+        successToast("Item removed from wishlist");
       } catch (error) {
         console.error("ERROR", error);
       }

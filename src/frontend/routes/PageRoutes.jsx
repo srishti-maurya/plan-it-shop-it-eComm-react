@@ -1,7 +1,7 @@
 import React from "react";
 import MockAPI from "../components/MockAPI";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, Products, Cart, Logout, Wishlist } from "../pages";
+import { Home, Login, Products, Cart, Logout, Wishlist, Signup } from "../pages";
 import { PrivateRoute } from "./PrivateRoute";
 
 export function PageRoutes() {
@@ -13,6 +13,7 @@ export function PageRoutes() {
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/signup" element={<Signup />} />
         <Route element={<PrivateRoute />}>
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
