@@ -1,6 +1,5 @@
 import { FaStar, FaHeart } from "react-icons/fa";
-import { useCart, useWishlist } from "../contexts/index";
-import { useNavigate } from "react-router-dom";
+import { useCart, useWishlist, useAuth } from "../contexts/index";
 
 export function Card({ item }) {
   const {
@@ -16,8 +15,8 @@ export function Card({ item }) {
     _id,
   } = item;
   const { addToCart, cartItems } = useCart();
+  const { navigate } = useAuth();
   const { wishlistItems, addToWishlist, deleteWishlistItem } = useWishlist();
-  const navigate = useNavigate();
 
   const matchedItem = cartItems.find((element) => {
     return element._id === item._id;

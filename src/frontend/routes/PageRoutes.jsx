@@ -1,5 +1,4 @@
 import React from "react";
-import MockAPI from "../components/MockAPI";
 import { Routes, Route } from "react-router-dom";
 import { Home, Login, Products, Cart, Logout, Wishlist, Signup } from "../pages";
 import { PrivateRoute } from "./PrivateRoute";
@@ -9,7 +8,6 @@ export function PageRoutes() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/mock" element={<MockAPI />} />
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />

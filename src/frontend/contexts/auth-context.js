@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     navigate("/logout");
-    setTimeout(() => successToast("Logout successful"), 0);
+    successToast("Logout successful");
   };
 
   const loginRequest = (input) => {
@@ -36,10 +36,8 @@ export function AuthProvider({ children }) {
       setToken(data.encodedToken);
       setIsLoggedIn(true);
       successToast("Login successful");
-      setTimeout(() => {
-        navigate("/");
-        setLoginInput({ email: "", password: "" });
-      }, 2000);
+      navigate("/");
+      setLoginInput({ email: "", password: "" });
     } catch (error) {
       console.log(error);
     }
@@ -58,15 +56,13 @@ export function AuthProvider({ children }) {
       setToken(data.encodedToken);
       setIsLoggedIn(true);
       successToast("Signup successful");
-      setTimeout(() => {
-        navigate("/");
-        setSignupInput({
-          fullname: "",
-          email: "",
-          password: "",
-          cnfpassword: "",
-        });
-      }, 2000);
+      navigate("/");
+      setSignupInput({
+        fullname: "",
+        email: "",
+        password: "",
+        cnfpassword: "",
+      });
     } catch (error) {
       console.log(error);
     }

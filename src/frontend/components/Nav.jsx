@@ -1,15 +1,13 @@
 import React from "react";
 import { logo } from "../index";
-import { ToastContainer } from "react-toastify";
 import { FaBars, FaHeart, FaShoppingCart } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCart, useAuth, useWishlist } from "../contexts";
 
 export function Nav() {
-  const { isLoggedIn, logoutHandler } = useAuth();
+  const { isLoggedIn, logoutHandler, navigate } = useAuth();
   const { cartItems } = useCart();
   const { wishlistItems } = useWishlist();
-  const navigate = useNavigate();
 
   return (
     <>
@@ -43,7 +41,6 @@ export function Nav() {
               Login
             </button>
           )}
-          <ToastContainer />
           <div>
             <div
               className="badge-container"

@@ -1,6 +1,5 @@
 import "./authStyles.css";
 import React from "react";
-import { ToastContainer } from "react-toastify";
 import { Nav } from "../../index.js";
 import { useAuth } from "../../contexts/index";
 import { Link } from "react-router-dom";
@@ -60,7 +59,6 @@ export function Login() {
               >
                 Login with test credentials
               </button>
-              <ToastContainer />
               <button className="btn btn-primary btn-full-width" type="submit">
                 Login
               </button>
