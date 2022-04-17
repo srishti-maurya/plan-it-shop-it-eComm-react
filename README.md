@@ -1,22 +1,55 @@
 <div id="top"></div>
 <div align="center">
-  <h3 align="center">Plan it, Shop it - E-commerce App</h3>
+ 
+   <a href="https://github.com/srishti-maurya/plan-it-shop-it-eComm-react/tree/dev">
+ <img src="./src/frontend/assets/logo/logo.png" alt="Logo" height="100">
+  </a>
+   <h3 align="center">Plan it, Shop it - E-commerce App</h3>
   <p align="center">
 Are you planning to read a book? We've got your back! The top book collections have been hand-picked for you at the best price.
   </p>
+    <br />
+    <a href="https://github.com/srishti-maurya/plan-it-shop-it-eComm-react/tree/dev"><strong>Explore the code »</strong></a>
+    <br />
+    <br />
+    <a href="https://planit-shopit.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/srishti-maurya/plan-it-shop-it-eComm-react/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/srishti-maurya/plan-it-shop-it-eComm-react/issues">Request Feature</a>
+  </p>
 </div>
+
+## Features
+
+- Landing page with a list of featured categories and featured products
+- Product Listing page
+- Sort and filter products
+- Authentication
+- Wishlist Management
+- Cart Management
+- Toasts 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Built using
+
+- ReactJS
+- React Router v6
+- React Context API and useReducer
+- MockBee
+- [Plan it, Use it](https://develop--planit-useit.netlify.app/) - CSS Component Library
+- React Tostify
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Preview 
+![landing page](https://user-images.githubusercontent.com/39724354/163706315-93ec4fa4-58ec-4237-9745-373b47045b55.png)
+![product listing](https://user-images.githubusercontent.com/39724354/163706318-7537630b-56dd-4084-87fa-619818288cee.png)
 
 ## E-Commerce Backend
 
 This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that we can focus on building Frontend.
-
-### Built With
-
-- [HTML 5](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [ReactJS](https://reactjs.org/)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Contributing
 
