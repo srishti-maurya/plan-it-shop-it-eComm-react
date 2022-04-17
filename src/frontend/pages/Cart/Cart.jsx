@@ -4,6 +4,7 @@ import { useCart } from "../../contexts";
 import { Nav, emptyCart } from "../../index";
 import { HorizontalCard } from "./components/HorizontalCard";
 import { CartBill } from "./components/CartBill";
+import { Link } from "react-router-dom";
 
 export function Cart() {
   const { cartItems, getCartItems } = useCart();
@@ -17,7 +18,10 @@ export function Cart() {
           <div className="empty">
             <img src={emptyCart} alt="empty_cart" />
             <p className="text-center color-text-secondary text-xl py-2">
-              Cart is empty
+              Cart is empty!!
+              <Link to="/products" className="btn btn-sm">
+                Shop Now
+              </Link>
             </p>
           </div>
         ) : (

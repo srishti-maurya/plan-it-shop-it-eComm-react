@@ -30,7 +30,6 @@ html,
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* justify-content: flex-start; */
   justify-content: space-around;
   align-content: flex-start;
 }
@@ -266,6 +265,13 @@ html,
   width: 400px;
   display: block;
   margin: auto;
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* media queries */

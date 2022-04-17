@@ -1,6 +1,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, Products, Cart, Logout, Wishlist, Signup } from "../pages";
+import {
+  Home,
+  Login,
+  Products,
+  Cart,
+  Logout,
+  Wishlist,
+  Signup,
+  NotFound,
+} from "../pages";
 import { PrivateRoute } from "./PrivateRoute";
 
 export function PageRoutes() {
@@ -16,6 +25,7 @@ export function PageRoutes() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
         </Route>
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </>
   );

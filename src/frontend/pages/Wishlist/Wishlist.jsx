@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Card } from "../../components/Card";
 import { Nav, emptyWishlist } from "../../index";
 import { useWishlist } from "../../contexts";
+import { Link } from "react-router-dom";
 
 export function Wishlist() {
   const { wishlistItems, getWishlistItems } = useWishlist();
@@ -14,7 +15,10 @@ export function Wishlist() {
         <div className="empty">
           <img src={emptyWishlist} alt="empty_wishlist" />
           <p className="text-center color-text-secondary text-xl py-2">
-            Wishlist is empty
+            Wishlist is empty!!
+            <Link to="/products" className="btn btn-sm">
+              Shop Now
+            </Link>
           </p>
         </div>
       ) : (
