@@ -8,10 +8,10 @@ const COLORS = ["#6366f1", "#f59e0b", "#10b981", "#ef4444", "#8b5cf6"];
 
 export function CategoryDistributionChart({ data }: CategoryDistributionChartProps) {
   return (
-    <div className="rounded-lg border bg-white p-6 shadow-sm">
-      <h3 className="mb-4 text-lg font-semibold text-gray-900">Products by Category</h3>
+    <div className="rounded-lg border bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+      <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-slate-100">Products by Category</h3>
       {data.length === 0 ? (
-        <p className="py-8 text-center text-gray-500">No product data yet</p>
+        <p className="py-8 text-center text-gray-500 dark:text-slate-400">No product data yet</p>
       ) : (
         <ResponsiveContainer width="100%" height={400}>
           <PieChart>

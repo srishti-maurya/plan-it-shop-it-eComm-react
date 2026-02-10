@@ -53,10 +53,10 @@ function ProductCardComponent({ item }: ProductCardProps) {
     <div
       onMouseEnter={handlePrefetch}
       onFocus={handlePrefetch}
-      className="group relative w-60 rounded-lg bg-white shadow-sm transition-shadow hover:shadow-card"
+      className="group relative w-60 rounded-lg bg-white shadow-sm transition-shadow hover:shadow-card dark:bg-slate-800 dark:shadow-card-dark"
     >
       <button
-        className="absolute right-2 top-2 z-10 cursor-pointer p-1 text-gray-400 transition-colors hover:text-error-400"
+        className="absolute right-2 top-2 z-10 cursor-pointer p-1 text-gray-400 transition-colors hover:text-error-400 dark:text-slate-500"
         onClick={() =>
           inWishlist
             ? removeFromWishlistMutation.mutate(_id)
@@ -92,21 +92,21 @@ function ProductCardComponent({ item }: ProductCardProps) {
       </Link>
       <div className="absolute bottom-[43%] right-[10%] flex items-center gap-1 rounded bg-gray-800/80 px-1.5 py-0.5 text-xs text-white">
         {rating}
-        <FaStar className="text-amber-400" />
+        <FaStar className="text-amber-400" aria-hidden="true" />
       </div>
       <div className="p-3 text-center">
         <Link to={`/products/${_id}`}>
-          <h3 className="truncate text-base font-semibold hover:text-primary transition-colors">
+          <h3 className="truncate text-base font-semibold hover:text-primary transition-colors dark:text-slate-100 dark:hover:text-primary-300">
             {title}
           </h3>
         </Link>
-        <p className="text-sm text-gray-500">{author}</p>
+        <p className="text-sm text-gray-500 dark:text-slate-400">{author}</p>
         <div className="mt-1 flex items-center justify-center gap-2 text-sm">
-          <span className="font-semibold">{price}</span>
-          <span className="text-xs text-gray-400 line-through">
+          <span className="font-semibold dark:text-slate-200">{price}</span>
+          <span className="text-xs text-gray-400 line-through dark:text-slate-500">
             {prevPrice}
           </span>
-          <span className="text-xs text-dark-green">(Save {discount}%)</span>
+          <span className="text-xs text-dark-green dark:text-green-400">(Save {discount}%)</span>
         </div>
         <Button
           size="sm"

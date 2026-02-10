@@ -41,7 +41,7 @@ export function StarRating({
         ) : halfFilled ? (
           <FaStarHalfAlt />
         ) : (
-          <FaRegStar className="text-gray-300" />
+          <FaRegStar className="text-gray-300 dark:text-slate-600" />
         )}
       </button>
     );

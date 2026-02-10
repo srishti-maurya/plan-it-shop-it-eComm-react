@@ -66,8 +66,8 @@ export function ProductDetailPage() {
   if (!product) {
     return (
       <div className="py-12 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">Product not found</h2>
-        <Link to="/products" className="mt-4 text-primary hover:underline">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200">Product not found</h2>
+        <Link to="/products" className="mt-4 text-primary hover:underline dark:text-primary-300">
           Back to Products
         </Link>
       </div>
@@ -99,16 +99,16 @@ export function ProductDetailPage() {
     <div className="mx-auto max-w-6xl px-4 py-8">
       <Link
         to="/products"
-        className="mb-6 inline-flex items-center gap-2 text-gray-600 hover:text-primary"
+        className="mb-6 inline-flex items-center gap-2 text-gray-600 hover:text-primary dark:text-slate-400 dark:hover:text-primary-300"
       >
-        <FaArrowLeft />
+        <FaArrowLeft aria-hidden="true" />
         Back to Products
       </Link>
 
       <div className="grid gap-8 md:grid-cols-2">
         {/* Product Image */}
         <div className="relative">
-          <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gray-100">
+          <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gray-100 dark:bg-slate-800">
             <img
               src={product.image}
               alt={product.title}
@@ -135,8 +135,8 @@ export function ProductDetailPage() {
 
         {/* Product Info */}
         <div className="flex flex-col">
-          <h1 className="text-3xl font-bold text-gray-900">{product.title}</h1>
-          <p className="mt-1 text-lg text-gray-600">by {product.author}</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-slate-100">{product.title}</h1>
+          <p className="mt-1 text-lg text-gray-600 dark:text-slate-400">by {product.author}</p>
 
           <div className="mt-4">
             <RatingSummary
@@ -146,13 +146,13 @@ export function ProductDetailPage() {
           </div>
 
           <div className="mt-6 flex items-baseline gap-3">
-            <span className="text-3xl font-bold text-gray-900">
+            <span className="text-3xl font-bold text-gray-900 dark:text-slate-100">
               ₹{product.price}
             </span>
-            <span className="text-lg text-gray-400 line-through">
+            <span className="text-lg text-gray-400 line-through dark:text-slate-500">
               ₹{product.prevPrice}
             </span>
-            <span className="rounded bg-green-100 px-2 py-1 text-sm font-medium text-green-700">
+            <span className="rounded bg-green-100 px-2 py-1 text-sm font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
               {product.discount}% off
             </span>
           </div>
@@ -181,15 +181,15 @@ export function ProductDetailPage() {
                 inWishlist ? "Remove from wishlist" : "Add to wishlist"
               }
             >
-              <FaHeart className={inWishlist ? "text-red-500" : ""} />
+              <FaHeart className={inWishlist ? "text-red-500" : ""} aria-hidden="true" />
             </Button>
           </div>
 
-          <div className="mt-8 border-t pt-6">
-            <h3 className="text-sm font-medium text-gray-500 uppercase">
+          <div className="mt-8 border-t pt-6 dark:border-slate-700">
+            <h3 className="text-sm font-medium text-gray-500 uppercase dark:text-slate-400">
               Category
             </h3>
-            <p className="mt-1 text-gray-900 capitalize">
+            <p className="mt-1 text-gray-900 capitalize dark:text-slate-200">
               {product.categoryName.replace(/-/g, " ")}
             </p>
           </div>
@@ -197,23 +197,23 @@ export function ProductDetailPage() {
       </div>
 
       {/* Reviews Section */}
-      <div className="mt-12 border-t pt-8">
-        <h2 className="mb-6 text-2xl font-bold text-gray-900">
+      <div className="mt-12 border-t pt-8 dark:border-slate-700">
+        <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-slate-100">
           Customer Reviews
         </h2>
 
         {/* Review Form */}
         {isLoggedIn ? (
           userReview ? (
-            <div className="mb-8 rounded-lg bg-gray-50 p-4">
-              <p className="text-gray-600">
+            <div className="mb-8 rounded-lg bg-gray-50 p-4 dark:bg-slate-800">
+              <p className="text-gray-600 dark:text-slate-300">
                 You have already reviewed this book. You can edit or delete your
                 review below.
               </p>
             </div>
           ) : (
-            <div className="mb-8 rounded-lg border border-gray-200 bg-white p-6">
-              <h3 className="mb-4 text-lg font-medium">Write a Review</h3>
+            <div className="mb-8 rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800">
+              <h3 className="mb-4 text-lg font-medium dark:text-slate-100">Write a Review</h3>
               <ReviewForm
                 onSubmit={handleAddReview}
                 isLoading={addReviewMutation.isPending}
@@ -221,9 +221,9 @@ export function ProductDetailPage() {
             </div>
           )
         ) : (
-          <div className="mb-8 rounded-lg bg-gray-50 p-6 text-center">
-            <p className="text-gray-600">
-              <Link to="/login" className="text-primary hover:underline">
+          <div className="mb-8 rounded-lg bg-gray-50 p-6 text-center dark:bg-slate-800">
+            <p className="text-gray-600 dark:text-slate-300">
+              <Link to="/login" className="text-primary hover:underline dark:text-primary-300">
                 Sign in
               </Link>{" "}
               to write a review

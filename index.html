@@ -5,8 +5,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Plan it, Shop it - Your one-stop online bookstore for bestsellers, new releases, and expert picks." />
-  <meta name="theme-color" content="#1a3c40" />
+  <meta name="theme-color" content="#1a3c40" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
   <title>Plan it Shop it</title>
+  <script>
+    (function () {
+      var pref = localStorage.getItem("theme-preference");
+      var dark =
+        pref === "dark" ||
+        (pref !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      if (dark) document.documentElement.classList.add("dark");
+    })();
+  </script>
 </head>
 
 <body>

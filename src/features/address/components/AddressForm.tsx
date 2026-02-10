@@ -60,9 +60,9 @@ export function AddressForm({ address, onClose }: AddressFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-lg border bg-white p-6 shadow-sm"
+      className="rounded-lg border bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800"
     >
-      <h3 className="mb-4 text-lg font-semibold">
+      <h3 className="mb-4 text-lg font-semibold dark:text-slate-100">
         {isEditing ? "Edit Address" : "Add New Address"}
       </h3>
       <div className="grid gap-4 sm:grid-cols-2">
@@ -114,10 +114,10 @@ export function AddressForm({ address, onClose }: AddressFormProps) {
           <input
             type="checkbox"
             id="isDefault"
-            className="h-4 w-4 rounded border-gray-300 text-secondary focus:ring-secondary"
+            className="h-4 w-4 rounded border-gray-300 text-secondary focus:ring-secondary dark:border-slate-600"
             {...register("isDefault")}
           />
-          <label htmlFor="isDefault" className="text-sm text-gray-700">
+          <label htmlFor="isDefault" className="text-sm text-gray-700 dark:text-slate-300">
             Set as default address
           </label>
         </div>

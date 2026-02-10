@@ -10,3 +10,4 @@ export { Layout } from "./Layout";
 export { SearchInput } from "./SearchInput";
 export { ScrollRow } from "./ScrollRow";
 export { AdminRoute } from "./AdminRoute";
+export { ThemeToggle } from "./ThemeToggle";

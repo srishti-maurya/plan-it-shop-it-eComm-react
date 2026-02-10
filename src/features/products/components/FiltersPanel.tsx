@@ -19,19 +19,19 @@ export function FiltersPanel() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-bold text-primary">Filters</h2>
+        <h2 className="text-lg font-bold text-primary dark:text-primary-300">Filters</h2>
         <Button variant="outline" size="sm" onClick={() => dispatch(clearFilters())}>
           Clear
         </Button>
       </div>
       <hr />
-      <p className="text-sm text-gray-500">
+      <p aria-live="polite" className="text-sm text-gray-500 dark:text-slate-400">
         Showing {visibleProducts.length} of {totalFiltered} products
         {totalFiltered !== totalProducts && ` (${totalProducts} total)`}
       </p>
       <hr />
       <div>
-        <h3 className="mb-2 font-semibold text-primary">Price</h3>
+        <h3 className="mb-2 font-semibold text-primary dark:text-primary-300">Price</h3>
         <input
           type="range"
           min="100"
@@ -41,7 +41,7 @@ export function FiltersPanel() {
           onChange={(e) => dispatch(setPriceFilter(Number(e.target.value)))}
           className="w-full accent-secondary"
         />
-        <div className="flex justify-between text-xs text-gray-500">
+        <div className="flex justify-between text-xs text-gray-500 dark:text-slate-400">
           <span>150</span>
           <span>300</span>
           <span>450</span>
@@ -49,7 +49,7 @@ export function FiltersPanel() {
       </div>
       <hr />
       <div>
-        <h3 className="mb-2 font-semibold text-primary">Category</h3>
+        <h3 className="mb-2 font-semibold text-primary dark:text-primary-300">Category</h3>
         <Checkbox
           checked={filters.category.ALL_CATEGORY}
           label="All"
@@ -83,7 +83,7 @@ export function FiltersPanel() {
       </div>
       <hr />
       <div>
-        <h3 className="mb-2 font-semibold text-primary">Rating</h3>
+        <h3 className="mb-2 font-semibold text-primary dark:text-primary-300">Rating</h3>
         <RadioButton
           label="4.5 Stars & above"
           checked={filters.filterBy === "FOUR_POINT_FIVE_STARS"}
@@ -102,8 +102,8 @@ export function FiltersPanel() {
       </div>
       <hr />
       <div>
-        <h3 className="mb-2 font-semibold text-primary">Sort by</h3>
-        <label className="flex cursor-pointer items-center gap-2 py-1 text-sm">
+        <h3 className="mb-2 font-semibold text-primary dark:text-primary-300">Sort by</h3>
+        <label className="flex cursor-pointer items-center gap-2 py-1 text-sm dark:text-slate-200">
           <input
             type="radio"
             name="price"
@@ -113,7 +113,7 @@ export function FiltersPanel() {
           />
           Price - Low to High
         </label>
-        <label className="flex cursor-pointer items-center gap-2 py-1 text-sm">
+        <label className="flex cursor-pointer items-center gap-2 py-1 text-sm dark:text-slate-200">
           <input
             type="radio"
             name="price"
@@ -126,7 +126,7 @@ export function FiltersPanel() {
       </div>
       <hr />
       <div>
-        <h3 className="mb-2 font-semibold text-primary">Collections</h3>
+        <h3 className="mb-2 font-semibold text-primary dark:text-primary-300">Collections</h3>
         <Checkbox
           checked={filters.collections.BEST_SELLERS}
           label="Best Sellers"

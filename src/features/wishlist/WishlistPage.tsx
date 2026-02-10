@@ -8,7 +8,7 @@ export function WishlistPage() {
 
   return (
     <>
-      <h1 className="py-4 text-center text-2xl font-bold">My Wishlist</h1>
+      <h1 className="py-4 text-center text-2xl font-bold dark:text-slate-100">My Wishlist</h1>
       {isLoading ? (
         <LoadingSpinner />
       ) : wishlistItems.length <= 0 ? (
