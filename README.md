@@ -1,15 +1,15 @@
 <div id="top"></div>
 <div align="center">
- 
-   <a href="https://github.com/srishti-maurya/plan-it-shop-it-eComm-react/tree/dev">
- <img src="./src/frontend/assets/logo/logo.png" alt="Logo" height="100">
+
+   <a href="https://github.com/srishti-maurya/plan-it-shop-it-eComm-react">
+ <img src="./src/assets/logo/logo.png" alt="Logo" height="100">
   </a>
-   <h3 align="center">Plan it, Shop it - E-commerce App</h3>
+   <h3 align="center">Plan it, Shop it - E-commerce Bookstore</h3>
   <p align="center">
 Are you planning to read a book? We've got your back! The top book collections have been hand-picked for you at the best price.
   </p>
     <br />
-    <a href="https://github.com/srishti-maurya/plan-it-shop-it-eComm-react/tree/dev"><strong>Explore the code »</strong></a>
+    <a href="https://github.com/srishti-maurya/plan-it-shop-it-eComm-react"><strong>Explore the code »</strong></a>
     <br />
     <br />
     <a href="https://planit-shopit.netlify.app/">View Demo</a>
@@ -22,34 +22,70 @@ Are you planning to read a book? We've got your back! The top book collections h
 
 ## Features
 
-- Landing page with a list of featured categories and featured products
-- Product Listing page
-- Sort and filter products
-- Authentication
-- Wishlist Management
-- Cart Management
-- Toasts 
+### Storefront
+- Landing page with featured categories, featured products, recently viewed and continue browsing sections
+- Product listing page with sort, filter and search
+- Product detail page with reviews, similar books and "people also bought" recommendations
+- Wishlist management
+- Cart management with quantity updates
+- Address management (add, edit, delete, set default)
+- Checkout with coupon support and Stripe payment integration
+- Order history and order tracking
+- User profile
+- Google OAuth and email/password authentication
+- Toast notifications
+- Fully responsive design
+
+### Admin Dashboard
+- **Dashboard** — KPI cards (revenue, orders, products, users) with analytics charts (orders by status, products by category)
+- **Book Management** — Full CRUD with drag-and-drop cover image upload, category selection and collection flags
+- **Order Management** — View all orders across users, update order status
+
+### Test Credentials
+| Role | Email | Password |
+|------|-------|----------|
+| User | `srishtimaurya@gmail.com` | `srishtimaurya` |
+| Admin | `admin@planitshopit.com` | `admin123` |
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Built using
+## Built With
 
-- ReactJS
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS v4
 - React Router v6
-- React Context API and useReducer
-- MockBee
-- [Plan it, Use it](https://develop--planit-useit.netlify.app/) - CSS Component Library
-- React Tostify
+- Redux Toolkit
+- React Query (TanStack Query)
+- React Hook Form + Zod
+- Recharts
+- MirageJS (mock backend)
+- Headless UI
+- React Toastify
+- Stripe
+- Google OAuth
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Preview 
+## Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/srishti-maurya/plan-it-shop-it-eComm-react.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Preview
 ![landing page](https://user-images.githubusercontent.com/39724354/163706315-93ec4fa4-58ec-4237-9745-373b47045b55.png)
 ![product listing](https://user-images.githubusercontent.com/39724354/163706318-7537630b-56dd-4084-87fa-619818288cee.png)
-
-## E-Commerce Backend
-
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that we can focus on building Frontend.
 
 ## Contributing
 
@@ -68,6 +104,6 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-Your Name - [@SrishtiMaurya1](https://twitter.com/SrishtiMaurya1?s=09) - srishti22maurya@gmail.com
+Srishti Maurya - [@SrishtiMaurya1](https://twitter.com/SrishtiMaurya1?s=09) - srishti22maurya@gmail.com
 
 <p align="right">(<a href="#top">back to top</a>)</p>
