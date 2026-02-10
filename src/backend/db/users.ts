@@ -1,0 +1,33 @@
+import { v4 as uuid } from "uuid";
+import { formatDate } from "../utils/authUtils";
+
+export const users = [
+  {
+    _id: uuid(),
+    firstName: "Adarsh",
+    lastName: "Balika",
+    email: "adarshbalika@gmail.com",
+    password: "adarshbalika",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    firstName: "Srishti",
+    lastName: "Maurya",
+    email: "srishtimaurya@gmail.com",
+    password: "srishtimaurya",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    firstName: "Admin",
+    lastName: "User",
+    email: "admin@planitshopit.com",
+    password: "admin123",
+    isAdmin: true,
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+];
