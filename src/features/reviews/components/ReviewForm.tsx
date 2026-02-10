@@ -64,19 +64,19 @@ export function ReviewForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="mb-2 block text-sm font-medium text-gray-700">
+        <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-slate-300">
           Your Rating
         </label>
         <StarRating rating={rating} onRatingChange={setRating} size="lg" />
         {errors.rating && (
-          <p className="mt-1 text-sm text-red-500">{errors.rating}</p>
+          <p role="alert" className="mt-1 text-sm text-red-500">{errors.rating}</p>
         )}
       </div>
 
       <div>
         <label
           htmlFor="review-title"
-          className="mb-2 block text-sm font-medium text-gray-700"
+          className="mb-2 block text-sm font-medium text-gray-700 dark:text-slate-300"
         >
           Review Title
         </label>
@@ -87,16 +87,17 @@ export function ReviewForm({
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Summarize your experience"
           className={errors.title ? "border-red-500" : ""}
+          aria-describedby={errors.title ? "review-title-error" : undefined}
         />
         {errors.title && (
-          <p className="mt-1 text-sm text-red-500">{errors.title}</p>
+          <p id="review-title-error" role="alert" className="mt-1 text-sm text-red-500">{errors.title}</p>
         )}
       </div>
 
       <div>
         <label
           htmlFor="review-comment"
-          className="mb-2 block text-sm font-medium text-gray-700"
+          className="mb-2 block text-sm font-medium text-gray-700 dark:text-slate-300"
         >
           Your Review
         </label>
@@ -106,12 +107,13 @@ export function ReviewForm({
           onChange={(e) => setComment(e.target.value)}
           placeholder="Share your thoughts about this book..."
           rows={4}
-          className={`w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-            errors.comment ? "border-red-500" : "border-gray-300"
+          aria-describedby={errors.comment ? "review-comment-error" : undefined}
+          className={`w-full rounded-lg border px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-400 ${
+            errors.comment ? "border-red-500" : "border-gray-300 dark:border-slate-600"
           }`}
         />
         {errors.comment && (
-          <p className="mt-1 text-sm text-red-500">{errors.comment}</p>
+          <p id="review-comment-error" role="alert" className="mt-1 text-sm text-red-500">{errors.comment}</p>
         )}
       </div>
 

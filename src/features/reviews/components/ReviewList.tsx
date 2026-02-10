@@ -20,7 +20,7 @@ export function ReviewList({
 }: ReviewListProps) {
   if (reviews.length === 0) {
     return (
-      <div className="py-8 text-center text-gray-500">
+      <div className="py-8 text-center text-gray-500 dark:text-slate-400">
         No reviews yet. Be the first to review this book!
       </div>
     );

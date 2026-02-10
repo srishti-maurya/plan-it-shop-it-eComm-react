@@ -49,8 +49,8 @@ export function ReviewItem({
 
   if (isEditing) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-white p-4">
-        <h4 className="mb-3 font-medium">Edit Your Review</h4>
+      <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+        <h4 className="mb-3 font-medium dark:text-slate-100">Edit Your Review</h4>
         <ReviewForm
           onSubmit={handleUpdate}
           existingReview={review}
@@ -62,14 +62,14 @@ export function ReviewItem({
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4">
+    <div className="rounded-lg border border-gray-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
       <div className="mb-2 flex items-start justify-between">
         <div>
           <div className="flex items-center gap-2">
-            <span className="font-medium">{review.userName}</span>
+            <span className="font-medium dark:text-slate-200">{review.userName}</span>
             <StarRating rating={review.rating} readonly size="sm" />
           </div>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-500 dark:text-slate-500">
             {formatDate(review.createdAt)}
             {review.updatedAt !== review.createdAt && " (edited)"}
           </p>
@@ -83,7 +83,7 @@ export function ReviewItem({
               disabled={isDeleting}
               aria-label="Edit review"
             >
-              <FaEdit className="text-gray-500" />
+              <FaEdit className="text-gray-500 dark:text-slate-400" />
             </Button>
             <Button
               variant="ghost"
@@ -97,8 +97,8 @@ export function ReviewItem({
           </div>
         )}
       </div>
-      <h4 className="mb-1 font-medium">{review.title}</h4>
-      <p className="text-gray-600">{review.comment}</p>
+      <h4 className="mb-1 font-medium dark:text-slate-200">{review.title}</h4>
+      <p className="text-gray-600 dark:text-slate-400">{review.comment}</p>
 
       <ConfirmDialog
         isOpen={showDeleteConfirm}

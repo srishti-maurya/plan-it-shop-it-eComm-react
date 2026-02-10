@@ -85,7 +85,6 @@ export function PaymentForm({
       return;
     }
 
-    // Keep CardElement mounted - just show loading on button
     setIsValidatingCard(true);
     setError(null);
 
@@ -113,7 +112,6 @@ export function PaymentForm({
     setPaymentStep("processing");
     setError(null);
 
-    // Simulate server-side payment processing
     await simulateServerDelay();
 
     onPaymentSuccess(paymentMethodId);
@@ -146,30 +144,28 @@ export function PaymentForm({
   // Processing state
   if (paymentStep === "processing") {
     return (
-      <div className="rounded-lg border bg-white p-6">
+      <div className="rounded-lg border bg-white p-6 dark:border-slate-700 dark:bg-slate-800">
         <div className="flex flex-col items-center justify-center py-8">
-          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-secondary" />
-          <p className="text-lg font-medium text-gray-700">Processing payment...</p>
-          <p className="mt-1 text-sm text-gray-500">Please do not close this page</p>
+          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-secondary dark:border-slate-700 dark:border-t-secondary-400" />
+          <p className="text-lg font-medium text-gray-700 dark:text-slate-200">Processing payment...</p>
+          <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Please do not close this page</p>
         </div>
       </div>
     );
   }
 
-  // Review & Confirm step - Single page layout
+  // Review & Confirm step
   if (paymentStep === "review") {
     const { cartItems, pricing, address } = orderDetails;
 
     return (
       <div className="space-y-6">
-        <h3 className="text-xl font-semibold">Review & Confirm Payment</h3>
+        <h3 className="text-xl font-semibold dark:text-slate-100">Review & Confirm Payment</h3>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {/* Left Column - Order Details */}
           <div className="space-y-4">
-            {/* Order Items */}
-            <div className="rounded-lg border bg-white p-4">
-              <h4 className="mb-3 font-medium text-gray-800">Order Items ({cartItems.length})</h4>
+            <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+              <h4 className="mb-3 font-medium text-gray-800 dark:text-slate-200">Order Items ({cartItems.length})</h4>
               <div className="max-h-48 space-y-3 overflow-y-auto">
                 {cartItems.map((item) => (
                   <div key={item._id} className="flex items-center gap-3">
@@ -179,75 +175,70 @@ export function PaymentForm({
                       className="h-12 w-10 rounded object-cover"
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="truncate text-sm font-medium text-gray-800">{item.title}</p>
-                      <p className="text-xs text-gray-500">Qty: {item.qty}</p>
+                      <p className="truncate text-sm font-medium text-gray-800 dark:text-slate-200">{item.title}</p>
+                      <p className="text-xs text-gray-500 dark:text-slate-400">Qty: {item.qty}</p>
                     </div>
-                    <p className="text-sm font-medium">Rs {Number(item.price) * item.qty}</p>
+                    <p className="text-sm font-medium dark:text-slate-200">Rs {Number(item.price) * item.qty}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Delivery Address */}
-            <div className="rounded-lg border bg-white p-4">
-              <h4 className="mb-2 font-medium text-gray-800">Delivery Address</h4>
-              <p className="font-medium text-gray-700">{address.name}</p>
-              <p className="text-sm text-gray-600">
+            <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+              <h4 className="mb-2 font-medium text-gray-800 dark:text-slate-200">Delivery Address</h4>
+              <p className="font-medium text-gray-700 dark:text-slate-300">{address.name}</p>
+              <p className="text-sm text-gray-600 dark:text-slate-400">
                 {address.street}, {address.city}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-slate-400">
                 {address.state} - {address.zipCode}
               </p>
-              <p className="mt-1 text-sm text-gray-500">Phone: {address.phone}</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-slate-500">Phone: {address.phone}</p>
             </div>
           </div>
 
-          {/* Right Column - Payment Summary */}
           <div className="space-y-4">
-            {/* Price Breakdown */}
-            <div className="rounded-lg border bg-white p-4">
-              <h4 className="mb-3 font-medium text-gray-800">Payment Summary</h4>
+            <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+              <h4 className="mb-3 font-medium text-gray-800 dark:text-slate-200">Payment Summary</h4>
               <div className="space-y-2 text-sm">
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-600 dark:text-slate-400">
                   <span>Subtotal</span>
                   <span>Rs {pricing.actualPrice}</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-600 dark:text-slate-400">
                   <span>Delivery Charges</span>
                   <span>Rs {pricing.deliveryCharge}</span>
                 </div>
                 {pricing.couponDiscount > 0 && (
-                  <div className="flex justify-between text-green-600">
+                  <div className="flex justify-between text-green-600 dark:text-green-400">
                     <span>Coupon Discount ({pricing.couponCode})</span>
                     <span>-Rs {pricing.couponDiscount}</span>
                   </div>
                 )}
                 <hr className="my-2" />
-                <div className="flex justify-between text-lg font-semibold text-gray-800">
+                <div className="flex justify-between text-lg font-semibold text-gray-800 dark:text-slate-100">
                   <span>Total Amount</span>
                   <span>Rs {pricing.grandTotal}</span>
                 </div>
               </div>
             </div>
 
-            {/* Payment Method */}
-            <div className="rounded-lg border bg-white p-4">
-              <h4 className="mb-2 font-medium text-gray-800">Payment Method</h4>
+            <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+              <h4 className="mb-2 font-medium text-gray-800 dark:text-slate-200">Payment Method</h4>
               <div className="flex items-center gap-2">
-                <div className="flex h-8 w-12 items-center justify-center rounded bg-gray-100">
-                  <span className="text-xs font-bold text-gray-600">CARD</span>
+                <div className="flex h-8 w-12 items-center justify-center rounded bg-gray-100 dark:bg-slate-700">
+                  <span className="text-xs font-bold text-gray-600 dark:text-slate-300">CARD</span>
                 </div>
-                <span className="text-sm text-gray-600">Credit/Debit Card</span>
+                <span className="text-sm text-gray-600 dark:text-slate-400">Credit/Debit Card</span>
               </div>
             </div>
 
             {error && (
-              <div className="rounded-md bg-red-50 border border-red-200 p-3">
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="rounded-md bg-red-50 border border-red-200 p-3 dark:bg-red-900/20 dark:border-red-800">
+                <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
               </div>
             )}
 
-            {/* Action Buttons */}
             <div className="flex flex-col gap-3">
               <Button
                 onClick={handleConfirmPayment}
@@ -274,31 +265,31 @@ export function PaymentForm({
 
   // Card input step
   return (
-    <div className="rounded-lg border bg-white p-4">
-      <h3 className="mb-4 font-semibold">Payment Details</h3>
+    <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+      <h3 className="mb-4 font-semibold dark:text-slate-100">Payment Details</h3>
 
       <form onSubmit={handleContinueToReview} className="space-y-4">
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-700">
+          <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-slate-300">
             Card Information
           </label>
-          <div className="rounded border border-gray-300 px-3 py-3 transition-colors focus-within:border-secondary focus-within:ring-1 focus-within:ring-secondary">
+          <div className="rounded border border-gray-300 px-3 py-3 transition-colors focus-within:border-secondary focus-within:ring-1 focus-within:ring-secondary dark:border-slate-600 dark:bg-slate-700">
             <CardElement options={cardElementOptions} onChange={handleCardChange} />
           </div>
         </div>
 
         {error && (
-          <div className="rounded-md bg-red-50 border border-red-200 p-3">
-            <p className="text-sm text-red-600">{error}</p>
+          <div className="rounded-md bg-red-50 border border-red-200 p-3 dark:bg-red-900/20 dark:border-red-800">
+            <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
           </div>
         )}
 
-        <div className="rounded-md bg-gray-50 p-3">
-          <p className="text-xs font-medium text-gray-600 mb-1">Test Card:</p>
-          <p className="text-xs text-gray-500">
+        <div className="rounded-md bg-gray-50 p-3 dark:bg-slate-700">
+          <p className="text-xs font-medium text-gray-600 mb-1 dark:text-slate-300">Test Card:</p>
+          <p className="text-xs text-gray-500 dark:text-slate-400">
             <span className="font-mono">4242 4242 4242 4242</span>
           </p>
-          <p className="text-xs text-gray-400 mt-1">
+          <p className="text-xs text-gray-400 mt-1 dark:text-slate-500">
             Use any future date, any CVC, any postal code
           </p>
         </div>
@@ -350,30 +341,28 @@ export function PaymentFormFallback({
   // Processing state
   if (paymentStep === "processing") {
     return (
-      <div className="rounded-lg border bg-white p-6">
+      <div className="rounded-lg border bg-white p-6 dark:border-slate-700 dark:bg-slate-800">
         <div className="flex flex-col items-center justify-center py-8">
-          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-secondary" />
-          <p className="text-lg font-medium text-gray-700">Processing payment...</p>
-          <p className="mt-1 text-sm text-gray-500">Please do not close this page</p>
+          <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-secondary dark:border-slate-700 dark:border-t-secondary-400" />
+          <p className="text-lg font-medium text-gray-700 dark:text-slate-200">Processing payment...</p>
+          <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Please do not close this page</p>
         </div>
       </div>
     );
   }
 
-  // Review step - Single page layout
+  // Review step
   if (paymentStep === "review") {
     const { cartItems, pricing, address } = orderDetails;
 
     return (
       <div className="space-y-6">
-        <h3 className="text-xl font-semibold">Review & Confirm Payment</h3>
+        <h3 className="text-xl font-semibold dark:text-slate-100">Review & Confirm Payment</h3>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {/* Left Column - Order Details */}
           <div className="space-y-4">
-            {/* Order Items */}
-            <div className="rounded-lg border bg-white p-4">
-              <h4 className="mb-3 font-medium text-gray-800">Order Items ({cartItems.length})</h4>
+            <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+              <h4 className="mb-3 font-medium text-gray-800 dark:text-slate-200">Order Items ({cartItems.length})</h4>
               <div className="max-h-48 space-y-3 overflow-y-auto">
                 {cartItems.map((item) => (
                   <div key={item._id} className="flex items-center gap-3">
@@ -383,64 +372,59 @@ export function PaymentFormFallback({
                       className="h-12 w-10 rounded object-cover"
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="truncate text-sm font-medium text-gray-800">{item.title}</p>
-                      <p className="text-xs text-gray-500">Qty: {item.qty}</p>
+                      <p className="truncate text-sm font-medium text-gray-800 dark:text-slate-200">{item.title}</p>
+                      <p className="text-xs text-gray-500 dark:text-slate-400">Qty: {item.qty}</p>
                     </div>
-                    <p className="text-sm font-medium">Rs {Number(item.price) * item.qty}</p>
+                    <p className="text-sm font-medium dark:text-slate-200">Rs {Number(item.price) * item.qty}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Delivery Address */}
-            <div className="rounded-lg border bg-white p-4">
-              <h4 className="mb-2 font-medium text-gray-800">Delivery Address</h4>
-              <p className="font-medium text-gray-700">{address.name}</p>
-              <p className="text-sm text-gray-600">
+            <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+              <h4 className="mb-2 font-medium text-gray-800 dark:text-slate-200">Delivery Address</h4>
+              <p className="font-medium text-gray-700 dark:text-slate-300">{address.name}</p>
+              <p className="text-sm text-gray-600 dark:text-slate-400">
                 {address.street}, {address.city}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-slate-400">
                 {address.state} - {address.zipCode}
               </p>
-              <p className="mt-1 text-sm text-gray-500">Phone: {address.phone}</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-slate-500">Phone: {address.phone}</p>
             </div>
           </div>
 
-          {/* Right Column - Payment Summary */}
           <div className="space-y-4">
-            {/* Price Breakdown */}
-            <div className="rounded-lg border bg-white p-4">
-              <h4 className="mb-3 font-medium text-gray-800">Payment Summary</h4>
+            <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+              <h4 className="mb-3 font-medium text-gray-800 dark:text-slate-200">Payment Summary</h4>
               <div className="space-y-2 text-sm">
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-600 dark:text-slate-400">
                   <span>Subtotal</span>
                   <span>Rs {pricing.actualPrice}</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
+                <div className="flex justify-between text-gray-600 dark:text-slate-400">
                   <span>Delivery Charges</span>
                   <span>Rs {pricing.deliveryCharge}</span>
                 </div>
                 {pricing.couponDiscount > 0 && (
-                  <div className="flex justify-between text-green-600">
+                  <div className="flex justify-between text-green-600 dark:text-green-400">
                     <span>Coupon Discount ({pricing.couponCode})</span>
                     <span>-Rs {pricing.couponDiscount}</span>
                   </div>
                 )}
                 <hr className="my-2" />
-                <div className="flex justify-between text-lg font-semibold text-gray-800">
+                <div className="flex justify-between text-lg font-semibold text-gray-800 dark:text-slate-100">
                   <span>Total Amount</span>
                   <span>Rs {pricing.grandTotal}</span>
                 </div>
               </div>
             </div>
 
-            {/* Payment Method */}
-            <div className="rounded-lg border bg-white p-4">
-              <h4 className="mb-2 font-medium text-gray-800">Payment Method</h4>
-              <p className="text-sm text-gray-600">Simulated Payment (Demo Mode)</p>
+            <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+              <h4 className="mb-2 font-medium text-gray-800 dark:text-slate-200">Payment Method</h4>
+              <p className="text-sm text-gray-600 dark:text-slate-400">Simulated Payment (Demo Mode)</p>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col gap-3">
               <Button
                 onClick={handleConfirmPayment}
@@ -467,15 +451,15 @@ export function PaymentFormFallback({
 
   // Input step (fallback mode)
   return (
-    <div className="rounded-lg border bg-white p-4">
-      <h3 className="mb-4 font-semibold">Payment Details</h3>
+    <div className="rounded-lg border bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
+      <h3 className="mb-4 font-semibold dark:text-slate-100">Payment Details</h3>
 
-      <div className="rounded-md bg-yellow-50 border border-yellow-200 p-4 mb-4">
-        <p className="text-sm text-yellow-800">
+      <div className="rounded-md bg-yellow-50 border border-yellow-200 p-4 mb-4 dark:bg-yellow-900/20 dark:border-yellow-800">
+        <p className="text-sm text-yellow-800 dark:text-yellow-300">
           Stripe is not configured. Payment will be simulated.
         </p>
-        <p className="text-xs text-yellow-600 mt-1">
-          To enable real Stripe test mode, add <code className="bg-yellow-100 px-1">VITE_STRIPE_PUBLISHABLE_KEY</code> to your environment.
+        <p className="text-xs text-yellow-600 mt-1 dark:text-yellow-400">
+          To enable real Stripe test mode, add <code className="bg-yellow-100 px-1 dark:bg-yellow-900/30">VITE_STRIPE_PUBLISHABLE_KEY</code> to your environment.
         </p>
       </div>
 

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Dark Navy Blue - matches "Plan it" text in logo */
   --color-primary-50: #e8eef4;
@@ -37,6 +39,8 @@
 
   --shadow-nav: 0 0 4px rgb(0 0 0 / 40%);
   --shadow-card: 0 2px 8px rgb(0 0 0 / 15%);
+  --shadow-nav-dark: 0 0 4px rgb(0 0 0 / 60%);
+  --shadow-card-dark: 0 2px 8px rgb(0 0 0 / 40%);
 
   --breakpoint-xs: 480px;
   --breakpoint-sm: 640px;
@@ -55,6 +59,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .dark body {
+    background-color: #0f172a;
+    color: #e2e8f0;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -62,5 +71,28 @@
 
   button {
     cursor: pointer;
+  }
+
+  .dark hr {
+    border-color: #1e3a5f;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #4a9ca6;
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 }

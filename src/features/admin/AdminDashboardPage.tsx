@@ -10,7 +10,7 @@ export function AdminDashboardPage() {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100">Dashboard</h2>
       <KpiCards data={data} />
       <div className="grid gap-8 lg:grid-cols-2">
         <OrdersByStatusChart data={data.ordersByStatus} />

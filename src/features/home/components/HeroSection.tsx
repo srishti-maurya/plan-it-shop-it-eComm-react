@@ -10,12 +10,12 @@ export function HeroSection() {
         alt="Book collection cover"
         className="h-[300px] w-full object-cover sm:h-[400px] md:h-[540px]"
       />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-gray-50/80 p-4 text-primary backdrop-blur-sm sm:p-8">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-gray-50/80 p-4 text-primary backdrop-blur-sm dark:bg-slate-900/80 dark:text-primary-300 sm:p-8">
         <p className="text-lg font-bold sm:text-2xl">Welcome to</p>
         <p className="text-2xl font-bold sm:text-5xl">
-          Plan it, <span className="text-secondary">Shop it</span>
+          Plan it, <span className="text-secondary dark:text-secondary-300">Shop it</span>
         </p>
-        <p className="mt-2 max-w-lg text-sm text-gray-700 sm:text-xl">
+        <p className="mt-2 max-w-lg text-sm text-gray-700 dark:text-slate-300 sm:text-xl">
           Are you planning to read a book? We've got your back! The top book
           collections have been hand-picked for you at the best price.
         </p>

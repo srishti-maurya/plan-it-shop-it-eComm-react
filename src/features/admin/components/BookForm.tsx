@@ -62,9 +62,9 @@ export function BookForm({ product, onSubmit, onCancel, isSubmitting }: BookForm
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-lg border bg-white p-6 shadow-sm"
+      className="rounded-lg border bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800"
     >
-      <h3 className="mb-4 text-lg font-semibold">
+      <h3 className="mb-4 text-lg font-semibold dark:text-slate-100">
         {isEditing ? "Edit Book" : "Add New Book"}
       </h3>
 
@@ -85,12 +85,12 @@ export function BookForm({ product, onSubmit, onCancel, isSubmitting }: BookForm
         />
 
         <div className="flex flex-col gap-1">
-          <label htmlFor="categoryName" className="text-sm font-medium text-gray-700">
-            Category<span className="text-error-400 ml-0.5">*</span>
+          <label htmlFor="categoryName" className="text-sm font-medium text-gray-700 dark:text-slate-200">
+            Category<span className="text-error-400 ml-0.5" aria-hidden="true">*</span>
           </label>
           <select
             id="categoryName"
-            className={`w-full rounded border px-3 py-2 text-sm outline-none transition-colors focus:border-secondary focus:ring-1 focus:ring-secondary ${
+            className={`w-full rounded border px-3 py-2 text-sm outline-none transition-colors focus:border-secondary focus:ring-1 focus:ring-secondary dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200 ${
               errors.categoryName ? "border-error-400" : "border-gray-300"
             }`}
             {...register("categoryName")}
@@ -138,31 +138,31 @@ export function BookForm({ product, onSubmit, onCancel, isSubmitting }: BookForm
         />
 
         <div className="flex flex-col gap-3 sm:col-span-2">
-          <span className="text-sm font-medium text-gray-700">Collections</span>
+          <span className="text-sm font-medium text-gray-700 dark:text-slate-200">Collections</span>
           <div className="flex flex-wrap gap-6">
             <label className="flex items-center gap-2">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-secondary focus:ring-secondary"
+                className="h-4 w-4 rounded border-gray-300 text-secondary focus:ring-secondary dark:border-slate-600"
                 {...register("bestseller")}
               />
-              <span className="text-sm text-gray-700">Bestseller</span>
+              <span className="text-sm text-gray-700 dark:text-slate-300">Bestseller</span>
             </label>
             <label className="flex items-center gap-2">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-secondary focus:ring-secondary"
+                className="h-4 w-4 rounded border-gray-300 text-secondary focus:ring-secondary dark:border-slate-600"
                 {...register("newRelease")}
               />
-              <span className="text-sm text-gray-700">New Release</span>
+              <span className="text-sm text-gray-700 dark:text-slate-300">New Release</span>
             </label>
             <label className="flex items-center gap-2">
               <input
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-secondary focus:ring-secondary"
+                className="h-4 w-4 rounded border-gray-300 text-secondary focus:ring-secondary dark:border-slate-600"
                 {...register("expertPick")}
               />
-              <span className="text-sm text-gray-700">Expert Pick</span>
+              <span className="text-sm text-gray-700 dark:text-slate-300">Expert Pick</span>
             </label>
           </div>
         </div>

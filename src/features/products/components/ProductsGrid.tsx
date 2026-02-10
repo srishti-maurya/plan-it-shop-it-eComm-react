@@ -17,7 +17,7 @@ export function ProductsGrid() {
   if (visibleProducts.length === 0) {
     return (
       <div className="flex min-h-[200px] items-center justify-center">
-        <p className="text-gray-500">No products found matching your criteria.</p>
+        <p className="text-gray-500 dark:text-slate-400">No products found matching your criteria.</p>
       </div>
     );
   }

@@ -50,20 +50,20 @@ export function SearchInput({
   }, []);
 
   return (
-    <div className={`relative ${className}`}>
-      <FaSearch className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+    <div role="search" className={`relative ${className}`}>
+      <FaSearch className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-slate-500" aria-hidden="true" />
       <input
         type="text"
         value={inputValue}
         onChange={(e) => handleChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-10 text-sm outline-none transition-colors focus:border-secondary focus:ring-1 focus:ring-secondary"
+        className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-10 text-sm outline-none transition-colors focus:border-secondary focus:ring-1 focus:ring-secondary dark:border-slate-600 dark:bg-slate-800 dark:text-gray-100 dark:placeholder-slate-400"
       />
       {inputValue && (
         <button
           type="button"
           onClick={handleClear}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:text-slate-500 dark:hover:text-slate-300"
           aria-label="Clear search"
         >
           <FaTimes className="h-4 w-4" />

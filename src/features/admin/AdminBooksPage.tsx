@@ -43,7 +43,7 @@ export function AdminBooksPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Books</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100">Books</h2>
         {!showForm && !editingProduct && (
           <Button onClick={() => setShowForm(true)}>Add Book</Button>
         )}

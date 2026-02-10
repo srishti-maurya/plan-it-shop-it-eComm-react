@@ -25,12 +25,13 @@ export function CheckoutStepper({ currentStep }: CheckoutStepperProps) {
             <div key={step.key} className="flex items-center">
               <div className="flex flex-col items-center">
                 <div
+                  aria-current={isCurrent ? "step" : undefined}
                   className={`flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-semibold transition-colors ${
                     isCompleted
                       ? "border-green-500 bg-green-500 text-white"
                       : isCurrent
                       ? "border-secondary bg-secondary text-white"
-                      : "border-gray-300 bg-white text-gray-400"
+                      : "border-gray-300 bg-white text-gray-400 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-500"
                   }`}
                 >
                   {isCompleted ? <FaCheck className="h-4 w-4" /> : index + 1}
@@ -38,10 +39,10 @@ export function CheckoutStepper({ currentStep }: CheckoutStepperProps) {
                 <span
                   className={`mt-2 text-xs font-medium ${
                     isCompleted
-                      ? "text-green-600"
+                      ? "text-green-600 dark:text-green-400"
                       : isCurrent
                       ? "text-secondary"
-                      : "text-gray-400"
+                      : "text-gray-400 dark:text-slate-500"
                   }`}
                 >
                   {step.label}
@@ -50,7 +51,7 @@ export function CheckoutStepper({ currentStep }: CheckoutStepperProps) {
               {index < steps.length - 1 && (
                 <div
                   className={`mx-2 h-0.5 w-12 sm:w-20 ${
-                    index < currentIndex ? "bg-green-500" : "bg-gray-300"
+                    index < currentIndex ? "bg-green-500" : "bg-gray-300 dark:bg-slate-600"
                   }`}
                 />
               )}

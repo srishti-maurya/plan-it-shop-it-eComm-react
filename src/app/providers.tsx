@@ -7,6 +7,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { store } from "./store";
+import { ThemeProvider } from "@/shared/hooks/useTheme";
 
 const stripePromise = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
   ? loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
@@ -36,12 +37,14 @@ export function Providers({ children }: { children: ReactNode }) {
   );
 
   return (
-    <GoogleOAuthProvider clientId={googleClientId}>
-      {stripePromise ? (
-        <Elements stripe={stripePromise}>{stripeContent}</Elements>
-      ) : (
-        stripeContent
-      )}
-    </GoogleOAuthProvider>
+    <ThemeProvider>
+      <GoogleOAuthProvider clientId={googleClientId}>
+        {stripePromise ? (
+          <Elements stripe={stripePromise}>{stripeContent}</Elements>
+        ) : (
+          stripeContent
+        )}
+      </GoogleOAuthProvider>
+    </ThemeProvider>
   );
 }

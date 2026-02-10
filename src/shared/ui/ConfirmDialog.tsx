@@ -61,6 +61,7 @@ export function ConfirmDialog({
       role="dialog"
       aria-modal="true"
       aria-labelledby="confirm-dialog-title"
+      aria-describedby="confirm-dialog-message"
     >
       {/* Backdrop */}
       <div
@@ -72,15 +73,15 @@ export function ConfirmDialog({
       <div
         ref={dialogRef}
         tabIndex={-1}
-        className="relative z-10 mx-4 w-full max-w-md rounded-lg bg-white p-6 shadow-xl"
+        className="relative z-10 mx-4 w-full max-w-md rounded-lg bg-white p-6 shadow-xl dark:bg-slate-800"
       >
         <h2
           id="confirm-dialog-title"
-          className="mb-2 text-lg font-semibold text-gray-900"
+          className="mb-2 text-lg font-semibold text-gray-900 dark:text-slate-100"
         >
           {title}
         </h2>
-        <p className="mb-6 text-gray-600">{message}</p>
+        <p id="confirm-dialog-message" className="mb-6 text-gray-600 dark:text-slate-300">{message}</p>
 
         <div className="flex justify-end gap-3">
           <Button variant="outline" onClick={onCancel}>

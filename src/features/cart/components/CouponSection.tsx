@@ -53,22 +53,22 @@ export function CouponSection({
   if (appliedCoupon) {
     return (
       <div className="my-3">
-        <div className="flex items-center justify-between rounded-md bg-green-50 px-3 py-2">
+        <div className="flex items-center justify-between rounded-md bg-green-50 px-3 py-2 dark:bg-green-900/20">
           <div className="flex items-center gap-2">
-            <FaTag className="text-green-600" />
-            <span className="text-sm font-medium text-green-700">
+            <FaTag className="text-green-600 dark:text-green-400" aria-hidden="true" />
+            <span className="text-sm font-medium text-green-700 dark:text-green-300">
               {appliedCoupon.code}
             </span>
-            <span className="text-xs text-green-600">
+            <span className="text-xs text-green-600 dark:text-green-400">
               (-Rs {calcDiscount(appliedCoupon, cartTotal)})
             </span>
           </div>
           <button
             onClick={onRemove}
-            className="text-green-600 hover:text-green-800"
+            className="text-green-600 hover:text-green-800 dark:text-green-400 dark:hover:text-green-200"
             aria-label="Remove coupon"
           >
-            <FaTimes className="h-3.5 w-3.5" />
+            <FaTimes className="h-3.5 w-3.5" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -86,7 +86,7 @@ export function CouponSection({
             setError("");
           }}
           placeholder="Enter coupon code"
-          className="flex-1 rounded border border-gray-300 px-3 py-1.5 text-sm outline-none focus:border-secondary"
+          className="flex-1 rounded border border-gray-300 px-3 py-1.5 text-sm outline-none focus:border-secondary dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:placeholder-slate-400"
         />
         <Button size="sm" onClick={handleApply} disabled={!inputCode.trim()}>
           Apply
@@ -96,13 +96,14 @@ export function CouponSection({
 
       <button
         onClick={() => setShowCoupons(!showCoupons)}
-        className="mt-2 flex items-center gap-1 text-xs text-secondary hover:underline"
+        aria-expanded={showCoupons}
+        className="mt-2 flex items-center gap-1 text-xs text-secondary hover:underline dark:text-secondary-300"
       >
         View available coupons
         {showCoupons ? (
-          <FaChevronUp className="h-2.5 w-2.5" />
+          <FaChevronUp className="h-2.5 w-2.5" aria-hidden="true" />
         ) : (
-          <FaChevronDown className="h-2.5 w-2.5" />
+          <FaChevronDown className="h-2.5 w-2.5" aria-hidden="true" />
         )}
       </button>
 
@@ -118,23 +119,23 @@ export function CouponSection({
                 disabled={!isEligible}
                 className={`w-full rounded border p-2.5 text-left transition-colors ${
                   isEligible
-                    ? "cursor-pointer border-gray-200 hover:border-secondary hover:bg-secondary-50"
-                    : "cursor-not-allowed border-gray-100 bg-gray-50 opacity-60"
+                    ? "cursor-pointer border-gray-200 hover:border-secondary hover:bg-secondary-50 dark:border-slate-600 dark:hover:border-secondary-400 dark:hover:bg-secondary-900/20"
+                    : "cursor-not-allowed border-gray-100 bg-gray-50 opacity-60 dark:border-slate-700 dark:bg-slate-800"
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold">{coupon.code}</span>
+                  <span className="text-sm font-semibold dark:text-slate-200">{coupon.code}</span>
                   {isBest && isEligible && (
-                    <span className="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700">
+                    <span className="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
                       Best Value
                     </span>
                   )}
                 </div>
-                <p className="mt-0.5 text-xs text-gray-500">
+                <p className="mt-0.5 text-xs text-gray-500 dark:text-slate-400">
                   {coupon.description}
                 </p>
                 {isEligible && (
-                  <p className="mt-0.5 text-xs font-medium text-green-600">
+                  <p className="mt-0.5 text-xs font-medium text-green-600 dark:text-green-400">
                     You save Rs {calcDiscount(coupon, cartTotal)}
                   </p>
                 )}

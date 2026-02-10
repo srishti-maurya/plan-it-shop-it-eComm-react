@@ -40,30 +40,30 @@ export function CartBill() {
   };
 
   return (
-    <div className="rounded-lg bg-white p-6 shadow-card">
-      <p className="text-xl font-semibold">Price Details</p>
+    <div className="rounded-lg bg-white p-6 shadow-card dark:bg-slate-800 dark:shadow-card-dark">
+      <p className="text-xl font-semibold dark:text-slate-100">Price Details</p>
       <hr className="my-3" />
-      <div className="flex justify-between py-1">
+      <div className="flex justify-between py-1 dark:text-slate-200">
         <p>Price</p>
         <p>{actualPrice}</p>
       </div>
-      <div className="flex justify-between py-1">
+      <div className="flex justify-between py-1 dark:text-slate-200">
         <p>Delivery Charge</p>
         <p>{deliveryCharge}</p>
       </div>
       {couponDiscount > 0 && (
-        <div className="flex justify-between py-1 text-green-600">
+        <div className="flex justify-between py-1 text-green-600 dark:text-green-400">
           <p>Coupon Discount</p>
           <p>-{couponDiscount}</p>
         </div>
       )}
       <hr className="my-3" />
-      <div className="flex justify-between py-1 text-lg font-semibold">
+      <div className="flex justify-between py-1 text-lg font-semibold dark:text-slate-100">
         <p>Total Amount</p>
         <p>{grandTotal}</p>
       </div>
       <hr className="my-3" />
-      <p className="mb-2 text-sm text-green-700">
+      <p className="mb-2 text-sm text-green-700 dark:text-green-400">
         You saved {discountedPrice} on this order
       </p>
 

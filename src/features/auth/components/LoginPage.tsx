@@ -35,17 +35,17 @@ export function LoginPage() {
   return (
     <>
       <section className="mx-auto my-12 w-full max-w-md px-4">
-        <div className="rounded-lg bg-white p-6 shadow-card">
-          <h2 className="mb-6 text-center text-2xl font-bold text-primary">
+        <div className="rounded-lg bg-white p-6 shadow-card dark:bg-slate-800 dark:shadow-card-dark">
+          <h2 className="mb-6 text-center text-2xl font-bold text-primary dark:text-primary-300">
             Login
           </h2>
           <GoogleLoginButton />
           <div className="flex items-center gap-3 my-2">
-            <div className="flex-1 h-px bg-gray-300" />
-            <span className="text-sm text-gray-500">or continue with email</span>
-            <div className="flex-1 h-px bg-gray-300" />
+            <div className="flex-1 h-px bg-gray-300 dark:bg-slate-600" />
+            <span className="text-sm text-gray-500 dark:text-slate-400">or continue with email</span>
+            <div className="flex-1 h-px bg-gray-300 dark:bg-slate-600" />
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+          <form aria-label="Login form" onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
             <Input
               label="Email address"
               type="text"
@@ -81,8 +81,8 @@ export function LoginPage() {
             <Button variant="primary" size="full" type="submit">
               {loginMutation.isPending ? "Logging in..." : "Login"}
             </Button>
-            <p className="text-center text-sm">
-              <Link to="/signup" className="text-secondary hover:underline">
+            <p className="text-center text-sm dark:text-slate-300">
+              <Link to="/signup" className="text-secondary hover:underline dark:text-secondary-300">
                 Create new account
               </Link>
             </p>

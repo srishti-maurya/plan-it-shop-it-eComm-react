@@ -15,7 +15,7 @@ export function AdminOrdersPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">Orders</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100">Orders</h2>
       <OrderTable orders={orders} onUpdateStatus={handleUpdateStatus} />
     </div>
   );

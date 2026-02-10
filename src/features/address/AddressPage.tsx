@@ -23,7 +23,7 @@ export function AddressPage() {
   if (isLoading) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-8">
-        <p className="text-center text-gray-500">Loading addresses...</p>
+        <p className="text-center text-gray-500 dark:text-slate-400">Loading addresses...</p>
       </div>
     );
   }
@@ -31,7 +31,7 @@ export function AddressPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">My Addresses</h1>
+        <h1 className="text-2xl font-bold dark:text-slate-100">My Addresses</h1>
         {!showForm && (
           <Button onClick={() => setShowForm(true)}>Add New Address</Button>
         )}
@@ -45,8 +45,8 @@ export function AddressPage() {
 
       {addresses.length === 0 && !showForm ? (
         <div className="flex flex-col items-center gap-4 py-12">
-          <p className="text-xl text-secondary">No saved addresses</p>
-          <p className="text-gray-500">Add a delivery address to get started.</p>
+          <p className="text-xl text-secondary dark:text-secondary-300">No saved addresses</p>
+          <p className="text-gray-500 dark:text-slate-400">Add a delivery address to get started.</p>
         </div>
       ) : (
         <div className="grid gap-4">
