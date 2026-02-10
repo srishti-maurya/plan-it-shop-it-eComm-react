@@ -35,7 +35,7 @@ export const googleAuthHandler = function (
       }
 
       const encodedToken = sign(
-        { _id: foundUser._id, email },
+        { _id: foundUser._id, email, isAdmin: foundUser.isAdmin || false },
         import.meta.env.VITE_JWT_SECRET
       );
       foundUser.password = undefined;
@@ -62,7 +62,7 @@ export const googleAuthHandler = function (
     };
 
     const createdUser = schema.users.create(newUser);
-    const encodedToken = sign({ _id, email }, import.meta.env.VITE_JWT_SECRET);
+    const encodedToken = sign({ _id, email, isAdmin: false }, import.meta.env.VITE_JWT_SECRET);
 
     return new Response(201, {}, { createdUser, encodedToken });
   } catch (error) {

@@ -9,7 +9,7 @@ import type { RootState } from "@/app/store";
 export function useProductsQuery() {
   return useQuery<Product[]>({
     queryKey: ["products"],
-    queryFn: fetchProducts,
+    queryFn: ({ signal }) => fetchProducts(signal),
     staleTime: 5 * 60 * 1000,
     retry: 1,
   });

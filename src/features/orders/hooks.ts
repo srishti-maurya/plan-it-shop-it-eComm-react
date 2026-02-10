@@ -7,7 +7,7 @@ export function useOrdersQuery() {
   const isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"));
   return useQuery<Order[]>({
     queryKey: ["orders"],
-    queryFn: ordersApi.getOrders,
+    queryFn: ({ signal }) => ordersApi.getOrders(signal),
     enabled: isLoggedIn,
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -18,7 +18,7 @@ export function useOrderByIdQuery(orderId: string) {
   const isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"));
   return useQuery<Order>({
     queryKey: ["orders", orderId],
-    queryFn: () => ordersApi.getOrderById(orderId),
+    queryFn: ({ signal }) => ordersApi.getOrderById(orderId, signal),
     enabled: isLoggedIn && Boolean(orderId),
     staleTime: 5 * 60 * 1000,
     retry: 1,

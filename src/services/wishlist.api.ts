@@ -1,8 +1,8 @@
-import { api } from "./api";
+import { api, signalToCancelToken } from "./api";
 import type { Product, WishlistItem } from "@/types";
 
-export async function getWishlistItems(): Promise<WishlistItem[]> {
-  const { data } = await api.get("/user/wishlist");
+export async function getWishlistItems(signal?: AbortSignal): Promise<WishlistItem[]> {
+  const { data } = await api.get("/user/wishlist", { cancelToken: signalToCancelToken(signal) });
   return data.wishlist;
 }
 

@@ -7,7 +7,7 @@ export function useAddressQuery() {
   const isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"));
   return useQuery<Address[]>({
     queryKey: ["addresses"],
-    queryFn: addressApi.getAddresses,
+    queryFn: ({ signal }) => addressApi.getAddresses(signal),
     enabled: isLoggedIn,
     staleTime: 5 * 60 * 1000,
     retry: 1,

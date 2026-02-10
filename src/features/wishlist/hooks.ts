@@ -8,7 +8,7 @@ export function useWishlistQuery() {
   const isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"));
   return useQuery<WishlistItem[]>({
     queryKey: ["wishlist"],
-    queryFn: wishlistApi.getWishlistItems,
+    queryFn: ({ signal }) => wishlistApi.getWishlistItems(signal),
     enabled: isLoggedIn,
     staleTime: 5 * 60 * 1000,
     retry: 1,

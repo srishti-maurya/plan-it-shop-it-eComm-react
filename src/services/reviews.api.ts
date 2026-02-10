@@ -1,4 +1,4 @@
-import { api } from "./api";
+import { api, signalToCancelToken } from "./api";
 import type { Review, ReviewPayload, Product } from "@/types";
 
 export interface ReviewResponse {
@@ -6,8 +6,8 @@ export interface ReviewResponse {
   product: Product;
 }
 
-export async function getProductReviews(productId: string): Promise<Review[]> {
-  const { data } = await api.get(`/products/${productId}/reviews`);
+export async function getProductReviews(productId: string, signal?: AbortSignal): Promise<Review[]> {
+  const { data } = await api.get(`/products/${productId}/reviews`, { cancelToken: signalToCancelToken(signal) });
   return data.reviews;
 }
 

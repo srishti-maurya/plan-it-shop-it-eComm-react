@@ -1,13 +1,13 @@
-import { api } from "./api";
+import { api, signalToCancelToken } from "./api";
 import type { Order, CreateOrderPayload } from "@/types";
 
-export async function getOrders(): Promise<Order[]> {
-  const { data } = await api.get("/user/orders");
+export async function getOrders(signal?: AbortSignal): Promise<Order[]> {
+  const { data } = await api.get("/user/orders", { cancelToken: signalToCancelToken(signal) });
   return data.orders;
 }
 
-export async function getOrderById(orderId: string): Promise<Order> {
-  const { data } = await api.get(`/user/orders/${orderId}`);
+export async function getOrderById(orderId: string, signal?: AbortSignal): Promise<Order> {
+  const { data } = await api.get(`/user/orders/${orderId}`, { cancelToken: signalToCancelToken(signal) });
   return data.order;
 }
 

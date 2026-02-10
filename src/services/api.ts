@@ -1,4 +1,12 @@
 import axios from "axios";
+import type { CancelToken } from "axios";
+
+export function signalToCancelToken(signal?: AbortSignal): CancelToken | undefined {
+  if (!signal) return undefined;
+  const source = axios.CancelToken.source();
+  signal.addEventListener("abort", () => source.cancel());
+  return source.token;
+}
 
 export const api = axios.create({
   baseURL: "/api",

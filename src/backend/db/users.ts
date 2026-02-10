@@ -20,4 +20,14 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
+  {
+    _id: uuid(),
+    firstName: "Admin",
+    lastName: "User",
+    email: "admin@planitshopit.com",
+    password: "admin123",
+    isAdmin: true,
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
 ];

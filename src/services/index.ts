@@ -6,3 +6,4 @@ export * from "./wishlist.api";
 export * from "./address.api";
 export * from "./orders.api";
 export * from "./reviews.api";
+export * from "./admin.api";

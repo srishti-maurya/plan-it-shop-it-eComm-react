@@ -1,5 +1,6 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { FaStar, FaHeart } from 'react-icons/fa';
 import { useCartQuery, useAddToCart } from '@/features/cart/hooks';
 import {
@@ -9,6 +10,7 @@ import {
 } from '@/features/wishlist/hooks';
 import { useAuth } from '@/features/auth/hooks';
 import { Button, Badge } from '@/shared/ui';
+import { fetchProduct } from '@/services/products.api';
 import type { Product } from '@/types';
 
 interface ProductCardProps {
@@ -31,6 +33,7 @@ function ProductCardComponent({ item }: ProductCardProps) {
   const { data: cartItems = [] } = useCartQuery();
   const addToCartMutation = useAddToCart();
   const { navigate } = useAuth();
+  const queryClient = useQueryClient();
   const { data: wishlistItems = [] } = useWishlistQuery();
   const addToWishlistMutation = useAddToWishlist();
   const removeFromWishlistMutation = useRemoveFromWishlist();
@@ -38,8 +41,20 @@ function ProductCardComponent({ item }: ProductCardProps) {
   const matchedItem = cartItems.find((el) => el._id === item._id);
   const inWishlist = wishlistItems.find((el) => el._id === item._id);
 
+  const handlePrefetch = useCallback(() => {
+    queryClient.prefetchQuery({
+      queryKey: ['product', _id],
+      queryFn: ({ signal }) => fetchProduct(_id, signal),
+      staleTime: 5 * 60 * 1000,
+    });
+  }, [queryClient, _id]);
+
   return (
-    <div className="group relative w-60 rounded-lg bg-white shadow-sm transition-shadow hover:shadow-card">
+    <div
+      onMouseEnter={handlePrefetch}
+      onFocus={handlePrefetch}
+      className="group relative w-60 rounded-lg bg-white shadow-sm transition-shadow hover:shadow-card"
+    >
       <button
         className="absolute right-2 top-2 z-10 cursor-pointer p-1 text-gray-400 transition-colors hover:text-error-400"
         onClick={() =>
@@ -97,8 +112,6 @@ function ProductCardComponent({ item }: ProductCardProps) {
           size="sm"
           className="mt-2 w-full"
           onClick={() => {
-            console.log('clicked', matchedItem);
-
             matchedItem ? navigate('/cart') : addToCartMutation.mutate(item);
           }}
         >

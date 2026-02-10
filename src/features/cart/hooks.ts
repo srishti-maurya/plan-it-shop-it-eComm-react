@@ -8,7 +8,7 @@ export function useCartQuery() {
   const isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"));
   return useQuery<CartItem[]>({
     queryKey: ["cart"],
-    queryFn: cartApi.getCartItems,
+    queryFn: ({ signal }) => cartApi.getCartItems(signal),
     enabled: isLoggedIn,
     staleTime: 5 * 60 * 1000,
     retry: 1,

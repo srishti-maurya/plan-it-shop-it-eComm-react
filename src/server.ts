@@ -41,6 +41,15 @@ import {
   getOrderByIdHandler,
   createOrderHandler,
 } from "./backend/controllers/OrderController";
+import {
+  adminGetAllProductsHandler,
+  adminCreateProductHandler,
+  adminUpdateProductHandler,
+  adminDeleteProductHandler,
+  adminGetAllOrdersHandler,
+  adminUpdateOrderStatusHandler,
+  adminGetAnalyticsHandler,
+} from "./backend/controllers/AdminController";
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
@@ -66,7 +75,26 @@ export function makeServer({ environment = "development" } = {}) {
       });
 
       users.forEach((item) =>
-        server.create("user", { ...item, cart: [], wishlist: [], addresses: [], orders: [] } as Record<string, unknown>)
+        server.create("user", {
+          ...item,
+          cart: [],
+          wishlist: [],
+          addresses: [
+            {
+              _id: "test-address-1",
+              name: "Srishti Maurya",
+              street: "221B Baker Street",
+              city: "Mumbai",
+              state: "Maharashtra",
+              zipCode: "400001",
+              phone: "9876543210",
+              isDefault: true,
+              createdAt: item.createdAt,
+              updatedAt: item.updatedAt,
+            },
+          ],
+          orders: [],
+        } as Record<string, unknown>)
       );
 
       categories.forEach((item) => server.create("category", { ...item } as Record<string, unknown>));
@@ -121,6 +149,15 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/products/:productId/reviews", addReviewHandler.bind(this));
       this.put("/products/:productId/reviews/:reviewId", updateReviewHandler.bind(this));
       this.delete("/products/:productId/reviews/:reviewId", deleteReviewHandler.bind(this));
+
+      // admin routes (private, admin only)
+      this.get("/admin/products", adminGetAllProductsHandler.bind(this));
+      this.post("/admin/products", adminCreateProductHandler.bind(this));
+      this.put("/admin/products/:productId", adminUpdateProductHandler.bind(this));
+      this.delete("/admin/products/:productId", adminDeleteProductHandler.bind(this));
+      this.get("/admin/orders", adminGetAllOrdersHandler.bind(this));
+      this.post("/admin/orders/:orderId/status", adminUpdateOrderStatusHandler.bind(this));
+      this.get("/admin/analytics", adminGetAnalyticsHandler.bind(this));
     },
   });
 }

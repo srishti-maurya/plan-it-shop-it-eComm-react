@@ -1,8 +1,8 @@
-import { api } from "./api";
+import { api, signalToCancelToken } from "./api";
 import type { Product, CartItem } from "@/types";
 
-export async function getCartItems(): Promise<CartItem[]> {
-  const { data } = await api.get("/user/cart");
+export async function getCartItems(signal?: AbortSignal): Promise<CartItem[]> {
+  const { data } = await api.get("/user/cart", { cancelToken: signalToCancelToken(signal) });
   return data.cart;
 }
 

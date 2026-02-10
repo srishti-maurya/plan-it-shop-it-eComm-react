@@ -6,7 +6,7 @@ import type { ReviewPayload, Product } from "@/types";
 export function useProductReviews(productId: string) {
   return useQuery({
     queryKey: ["reviews", productId],
-    queryFn: () => reviewsApi.getProductReviews(productId),
+    queryFn: ({ signal }) => reviewsApi.getProductReviews(productId, signal),
     enabled: Boolean(productId),
     staleTime: 5 * 60 * 1000,
   });

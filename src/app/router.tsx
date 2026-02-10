@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { PrivateRoute, Layout, SkeletonGrid } from "@/shared/components";
+import { PrivateRoute, AdminRoute, Layout, SkeletonGrid } from "@/shared/components";
 
 const HomePage = lazy(() =>
   import("@/features/home/HomePage").then((m) => ({ default: m.HomePage }))
@@ -41,6 +41,18 @@ const ProfilePage = lazy(() =>
 const NotFoundPage = lazy(() =>
   import("@/shared/components/NotFoundPage").then((m) => ({ default: m.NotFoundPage }))
 );
+const AdminLayout = lazy(() =>
+  import("@/features/admin/components/AdminLayout").then((m) => ({ default: m.AdminLayout }))
+);
+const AdminDashboardPage = lazy(() =>
+  import("@/features/admin/AdminDashboardPage").then((m) => ({ default: m.AdminDashboardPage }))
+);
+const AdminBooksPage = lazy(() =>
+  import("@/features/admin/AdminBooksPage").then((m) => ({ default: m.AdminBooksPage }))
+);
+const AdminOrdersPage = lazy(() =>
+  import("@/features/admin/AdminOrdersPage").then((m) => ({ default: m.AdminOrdersPage }))
+);
 
 function PageSkeleton() {
   return (
@@ -69,6 +81,17 @@ export function AppRouter() {
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Route>
+        </Route>
+
+        <Route element={<AdminRoute />}>
+          <Route element={<Suspense fallback={<PageSkeleton />}><AdminLayout /></Suspense>}>
+            <Route path="/admin" element={<AdminDashboardPage />} />
+            <Route path="/admin/books" element={<AdminBooksPage />} />
+            <Route path="/admin/orders" element={<AdminOrdersPage />} />
+          </Route>
+        </Route>
+
+        <Route element={<Layout />}>
           <Route path="/*" element={<NotFoundPage />} />
         </Route>
       </Routes>

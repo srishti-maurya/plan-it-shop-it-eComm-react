@@ -27,6 +27,11 @@ export function LoginPage() {
     setValue("password", "srishtimaurya");
   };
 
+  const adminCredentialsLogin = () => {
+    setValue("email", "admin@planitshopit.com");
+    setValue("password", "admin123");
+  };
+
   return (
     <>
       <section className="mx-auto my-12 w-full max-w-md px-4">
@@ -64,6 +69,14 @@ export function LoginPage() {
               onClick={testCredentialsLogin}
             >
               Login with test credentials
+            </Button>
+            <Button
+              variant="outline"
+              size="full"
+              type="button"
+              onClick={adminCredentialsLogin}
+            >
+              Login as admin
             </Button>
             <Button variant="primary" size="full" type="submit">
               {loginMutation.isPending ? "Logging in..." : "Login"}

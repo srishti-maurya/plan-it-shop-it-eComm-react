@@ -83,12 +83,32 @@ export interface User {
   lastName: string;
   email: string;
   password: string;
+  isAdmin?: boolean;
   createdAt: string;
   updatedAt: string;
   cart: CartItem[];
   wishlist: WishlistItem[];
   addresses: Address[];
   orders: Order[];
+}
+
+export interface ProductPayload {
+  title: string;
+  author: string;
+  categoryName: CategorySlug;
+  price: string;
+  prevPrice: string;
+  discount: string;
+  rating: string;
+  bestseller: boolean;
+  newRelease: boolean;
+  expertPick: boolean;
+  image: string;
+}
+
+export interface AdminOrder extends Order {
+  userId: string;
+  userName: string;
 }
 
 export interface AuthResponse {

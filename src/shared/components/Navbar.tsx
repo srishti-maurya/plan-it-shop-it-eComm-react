@@ -9,7 +9,7 @@ import { Disclosure, Menu } from "@headlessui/react";
 import { SearchInput } from "./SearchInput";
 
 export function Navbar() {
-  const { isLoggedIn, logoutHandler, navigate } = useAuth();
+  const { isLoggedIn, logoutHandler, navigate, user } = useAuth();
   const { data: cartItems = [] } = useCartQuery();
   const { data: wishlistItems = [] } = useWishlistQuery();
   const location = useLocation();
@@ -99,6 +99,18 @@ export function Navbar() {
                       <FaUser className="h-5 w-5" />
                     </Menu.Button>
                     <Menu.Items className="absolute right-0 mt-2 w-44 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none">
+                      {user?.isAdmin && (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              className={`${active ? "bg-gray-100" : ""} block w-full px-4 py-2 text-left text-sm font-medium text-secondary`}
+                              onClick={() => navigate("/admin")}
+                            >
+                              Admin Panel
+                            </button>
+                          )}
+                        </Menu.Item>
+                      )}
                       <Menu.Item>
                         {({ active }) => (
                           <button
@@ -154,6 +166,14 @@ export function Navbar() {
               >
                 Products
               </Link>
+              {isLoggedIn && user?.isAdmin && (
+                <Link
+                  to="/admin"
+                  className="rounded px-3 py-2 text-sm font-bold uppercase text-secondary hover:bg-gray-100"
+                >
+                  Admin Panel
+                </Link>
+              )}
               {isLoggedIn && (
                 <>
                   <Link

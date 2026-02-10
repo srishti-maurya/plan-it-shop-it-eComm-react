@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { FaHeart, FaArrowLeft } from "react-icons/fa";
-import { api } from "@/services/api";
+import { fetchProduct } from "@/services/products.api";
 import { useCartQuery, useAddToCart } from "@/features/cart/hooks";
 import {
   useWishlistQuery,
@@ -22,20 +23,22 @@ import {
 } from "@/features/reviews/components";
 import { Button, Badge } from "@/shared/ui";
 import { LoadingSpinner } from "@/shared/components";
-import type { Product, Review, ReviewPayload } from "@/types";
-
-async function fetchProduct(productId: string): Promise<Product> {
-  const { data } = await api.get(`/products/${productId}`);
-  return data.product;
-}
+import { SimilarBooksSection, PeopleAlsoBoughtSection } from "./components";
+import { useRecentlyViewed } from "@/shared/hooks/useRecentlyViewed";
+import type { Review, ReviewPayload } from "@/types";
 
 export function ProductDetailPage() {
   const { productId } = useParams<{ productId: string }>();
   const { user, navigate, isLoggedIn } = useAuth();
+  const { addProduct } = useRecentlyViewed();
+
+  useEffect(() => {
+    if (productId) addProduct(productId);
+  }, [productId, addProduct]);
 
   const { data: product, isLoading: isLoadingProduct } = useQuery({
     queryKey: ["product", productId],
-    queryFn: () => fetchProduct(productId!),
+    queryFn: ({ signal }) => fetchProduct(productId!, signal),
     enabled: Boolean(productId),
   });
 
@@ -92,6 +95,7 @@ export function ProductDetailPage() {
   };
 
   return (
+    <>
     <div className="mx-auto max-w-6xl px-4 py-8">
       <Link
         to="/products"
@@ -244,5 +248,8 @@ export function ProductDetailPage() {
         )}
       </div>
     </div>
+    <SimilarBooksSection product={product} />
+    <PeopleAlsoBoughtSection product={product} />
+    </>
   );
 }
