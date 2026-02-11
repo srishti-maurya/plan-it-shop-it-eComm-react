@@ -1,11 +1,16 @@
 import { useAdminAnalyticsQuery } from "./hooks";
 import { KpiCards, OrdersByStatusChart, CategoryDistributionChart } from "./components";
-import { LoadingSpinner } from "@/shared/components";
+import { SkeletonKpiCard } from "@/shared/components";
 
 export function AdminDashboardPage() {
   const { data, isLoading } = useAdminAnalyticsQuery();
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return (
+    <div className="space-y-8">
+      <div className="h-8 w-40 rounded bg-gray-200 dark:bg-slate-700 animate-pulse" />
+      <SkeletonKpiCard />
+    </div>
+  );
   if (!data) return null;
 
   return (

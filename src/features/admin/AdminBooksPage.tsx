@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/shared/ui";
-import { LoadingSpinner } from "@/shared/components";
+import { SkeletonTable } from "@/shared/components";
 import { BookForm, BookTable } from "./components";
 import { useAdminProductsQuery, useAdminCreateProduct, useAdminUpdateProduct, useAdminDeleteProduct } from "./hooks";
 import type { BookFormData } from "./schemas";
@@ -38,7 +38,12 @@ export function AdminBooksPage() {
     setEditingProduct(product);
   };
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return (
+    <div className="space-y-6">
+      <div className="h-8 w-24 rounded bg-gray-200 dark:bg-slate-700 animate-pulse" />
+      <SkeletonTable />
+    </div>
+  );
 
   return (
     <div className="space-y-6">

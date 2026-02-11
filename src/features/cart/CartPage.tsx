@@ -1,5 +1,5 @@
 import { useCartQuery } from "@/features/cart/hooks";
-import { LoadingSpinner } from "@/shared/components";
+import { SkeletonCartItem } from "@/shared/components";
 import { CartItem } from "./components/CartItem";
 import { CartBill } from "./components/CartBill";
 import { EmptyState } from "@/shared/ui";
@@ -12,7 +12,13 @@ export function CartPage() {
     <>
       <h1 className="py-4 text-center text-2xl font-bold">My Cart</h1>
       {isLoading ? (
-        <LoadingSpinner />
+        <section className="mx-4 lg:mx-8">
+          <div className="flex flex-col gap-4">
+            {Array.from({ length: 3 }, (_, i) => (
+              <SkeletonCartItem key={i} />
+            ))}
+          </div>
+        </section>
       ) : cartItems.length <= 0 ? (
         <EmptyState image={emptyCart} alt="empty_cart" message="Cart is empty!" />
       ) : (

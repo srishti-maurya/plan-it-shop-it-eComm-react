@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useOrdersQuery } from "./hooks";
 import { OrderCard } from "./components/OrderCard";
-import { LoadingSpinner } from "@/shared/components";
+import { SkeletonOrderCard } from "@/shared/components";
 import { Button, EmptyState } from "@/shared/ui";
 
 export function OrderHistoryPage() {
@@ -10,8 +10,13 @@ export function OrderHistoryPage() {
 
   if (isLoading) {
     return (
-      <div className="flex min-h-[400px] items-center justify-center">
-        <LoadingSpinner />
+      <div className="mx-auto max-w-3xl px-4 py-8">
+        <div className="mb-6 h-8 w-32 rounded bg-gray-200 dark:bg-slate-700 animate-pulse" />
+        <div className="space-y-4">
+          {Array.from({ length: 3 }, (_, i) => (
+            <SkeletonOrderCard key={i} />
+          ))}
+        </div>
       </div>
     );
   }

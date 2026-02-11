@@ -3,10 +3,11 @@ import { useRecentlyViewed } from "@/shared/hooks/useRecentlyViewed";
 import { useProductsQuery } from "@/features/products/hooks";
 import { ScrollRow } from "@/shared/components/ScrollRow";
 import { ProductCard } from "@/shared/components/ProductCard";
+import { SkeletonCard } from "@/shared/components/SkeletonCard";
 
 export function RecentlyViewedSection() {
   const { productIds } = useRecentlyViewed();
-  const { data: products = [] } = useProductsQuery();
+  const { data: products = [], isLoading } = useProductsQuery();
 
   const recentProducts = useMemo(() => {
     if (!productIds.length || !products.length) return [];
@@ -15,6 +16,20 @@ export function RecentlyViewedSection() {
       .map((id) => productMap.get(id))
       .filter(Boolean) as typeof products;
   }, [productIds, products]);
+
+  if (!productIds.length) return null;
+
+  if (isLoading) {
+    return (
+      <ScrollRow title="Recently Viewed">
+        {Array.from({ length: Math.min(productIds.length, 5) }, (_, i) => (
+          <div key={i} className="snap-start shrink-0">
+            <SkeletonCard />
+          </div>
+        ))}
+      </ScrollRow>
+    );
+  }
 
   if (!recentProducts.length) return null;
 
