@@ -22,7 +22,7 @@ import {
   ReviewList,
 } from "@/features/reviews/components";
 import { Button, Badge } from "@/shared/ui";
-import { LoadingSpinner } from "@/shared/components";
+import { SkeletonProductDetail, SkeletonReview } from "@/shared/components";
 import { SimilarBooksSection, PeopleAlsoBoughtSection } from "./components";
 import { useRecentlyViewed } from "@/shared/hooks/useRecentlyViewed";
 import type { Review, ReviewPayload } from "@/types";
@@ -56,11 +56,7 @@ export function ProductDetailPage() {
   const removeFromWishlistMutation = useRemoveFromWishlist();
 
   if (isLoadingProduct) {
-    return (
-      <div className="flex min-h-[400px] items-center justify-center">
-        <LoadingSpinner />
-      </div>
-    );
+    return <SkeletonProductDetail />;
   }
 
   if (!product) {
@@ -233,8 +229,10 @@ export function ProductDetailPage() {
 
         {/* Reviews List */}
         {isLoadingReviews ? (
-          <div className="flex justify-center py-8">
-            <LoadingSpinner />
+          <div className="space-y-6 py-8">
+            {Array.from({ length: 3 }, (_, i) => (
+              <SkeletonReview key={i} />
+            ))}
           </div>
         ) : (
           <ReviewList

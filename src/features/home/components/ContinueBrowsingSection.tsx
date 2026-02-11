@@ -3,12 +3,13 @@ import { useRecentlyViewed } from "@/shared/hooks/useRecentlyViewed";
 import { useProductsQuery } from "@/features/products/hooks";
 import { ScrollRow } from "@/shared/components/ScrollRow";
 import { ProductCard } from "@/shared/components/ProductCard";
+import { SkeletonCard } from "@/shared/components/SkeletonCard";
 
 const MAX_SUGGESTIONS = 10;
 
 export function ContinueBrowsingSection() {
   const { productIds } = useRecentlyViewed();
-  const { data: products = [] } = useProductsQuery();
+  const { data: products = [], isLoading } = useProductsQuery();
 
   const suggestions = useMemo(() => {
     if (!productIds.length || !products.length) return [];
@@ -21,6 +22,20 @@ export function ContinueBrowsingSection() {
       .filter((p) => categories.has(p.categoryName) && !viewedSet.has(p._id))
       .slice(0, MAX_SUGGESTIONS);
   }, [productIds, products]);
+
+  if (!productIds.length) return null;
+
+  if (isLoading) {
+    return (
+      <ScrollRow title="Continue Browsing">
+        {Array.from({ length: 5 }, (_, i) => (
+          <div key={i} className="snap-start shrink-0">
+            <SkeletonCard />
+          </div>
+        ))}
+      </ScrollRow>
+    );
+  }
 
   if (!suggestions.length) return null;
 

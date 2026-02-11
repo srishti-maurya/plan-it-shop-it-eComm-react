@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "@/shared/components";
+import { SkeletonTable } from "@/shared/components";
 import { OrderTable } from "./components";
 import { useAdminOrdersQuery, useAdminUpdateOrderStatus } from "./hooks";
 import type { OrderStatus } from "@/types";
@@ -11,7 +11,12 @@ export function AdminOrdersPage() {
     updateStatus.mutate({ orderId, status });
   };
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return (
+    <div className="space-y-6">
+      <div className="h-8 w-28 rounded bg-gray-200 dark:bg-slate-700 animate-pulse" />
+      <SkeletonTable />
+    </div>
+  );
 
   return (
     <div className="space-y-6">

@@ -1,4 +1,4 @@
-import { ProductCard, LoadingSpinner } from "@/shared/components";
+import { ProductCard, SkeletonGrid } from "@/shared/components";
 import { useWishlistQuery } from "@/features/wishlist/hooks";
 import { EmptyState } from "@/shared/ui";
 import emptyWishlist from "@/assets/svg/empty_wishlist.svg";
@@ -10,7 +10,7 @@ export function WishlistPage() {
     <>
       <h1 className="py-4 text-center text-2xl font-bold dark:text-slate-100">My Wishlist</h1>
       {isLoading ? (
-        <LoadingSpinner />
+        <SkeletonGrid count={4} />
       ) : wishlistItems.length <= 0 ? (
         <EmptyState
           image={emptyWishlist}
